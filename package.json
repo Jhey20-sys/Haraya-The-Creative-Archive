@@ -5,5 +5,9 @@
   "scripts": {
     "build": "cd silid-museo && npm install && npm run build",
     "dev": "cd silid-museo && npm run dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.1",
+    "supabase": "^2.109.1"
   }
 }
