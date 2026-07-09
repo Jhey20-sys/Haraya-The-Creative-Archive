@@ -118,10 +118,10 @@ export default function AdminDashboardPage() {
         {/* Sidebar Header / Branding */}
         <div className="px-5 py-5 border-b" style={{ borderColor: 'var(--border-subtle)' }}>
           <div className="flex items-center gap-2.5">
-            <span className="text-xl font-kingston" style={{ color: 'var(--accent-gold)' }}>M</span>
+            <span className="text-xl font-kingston" style={{ color: 'var(--text-primary)' }}>H</span>
             <div>
               <h1 className="text-sm font-bold leading-tight" style={{ color: 'var(--text-primary)' }}>
-                Silid-Museo
+                Haraya
               </h1>
               <p className="text-[10px] leading-tight" style={{ color: 'var(--text-muted)' }}>
                 Admin Dashboard
@@ -142,7 +142,7 @@ export default function AdminDashboardPage() {
               onClick={() => setActiveTab(tab.key)}
               className={`w-full flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 text-left ${
                 activeTab === tab.key
-                  ? 'bg-amber-500/10 text-amber-400 shadow-sm'
+                  ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
                   : 'hover:bg-white/5'
               }`}
               style={{ color: activeTab === tab.key ? undefined : 'var(--text-muted)' }}

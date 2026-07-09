@@ -220,7 +220,7 @@ export default function ModerationList() {
             key={tab.key}
             onClick={() => setActiveSubTab(tab.key)}
             className={`flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-all duration-200 ${
-              activeSubTab === tab.key ? 'bg-amber-500/15 text-amber-400 shadow-sm' : 'hover:bg-white/5'
+              activeSubTab === tab.key ? 'bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 shadow-sm' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800/30'
             }`}
             style={{ color: activeSubTab === tab.key ? undefined : 'var(--text-muted)' }}
           >
@@ -302,7 +302,7 @@ export default function ModerationList() {
                 ratings.map((rt) => (
                   <FeedbackRow
                     key={rt.id}
-                    text={<span className="text-amber-500 tracking-wide">{renderStars(rt.score)}</span>}
+                    text={<span className="text-neutral-400 dark:text-neutral-200 tracking-wide">{renderStars(rt.score)}</span>}
                     meta={rt.artworks?.title || 'Unknown artwork'}
                     subMeta={`Score: ${rt.score}/5`}
                     date={formatDate(rt.created_at)}
@@ -340,7 +340,7 @@ function StarPicker({ score, onChange }) {
           key={n}
           type="button"
           onClick={() => onChange(n)}
-          className={`text-lg leading-none ${n <= score ? 'text-amber-500' : 'text-white/20'}`}
+          className={`text-lg leading-none ${n <= score ? 'text-neutral-400 dark:text-neutral-200' : 'text-neutral-300/30'}`}
         >
           ★
         </button>
@@ -378,7 +378,7 @@ function FeedbackRow({
           <div className="text-sm mb-1" style={{ color: 'var(--text-primary)' }}>{text}</div>
         )}
         <div className="flex items-center gap-2 text-[11px] flex-wrap" style={{ color: 'var(--text-muted)' }}>
-          <span className="font-medium text-amber-500/70">{meta}</span>
+          <span className="font-medium text-neutral-500 dark:text-neutral-400">{meta}</span>
           {subMeta && (<><span className="opacity-30">•</span><span>{subMeta}</span></>)}
           <span className="opacity-30">•</span>
           <span>{date}</span>
@@ -411,7 +411,7 @@ function FeedbackRow({
             <button
             type="button"
               onClick={onEdit}
-              className="rounded-lg border border-amber-500/20 bg-amber-500/5 px-2.5 py-1.5 text-[11px] font-medium text-amber-400 hover:bg-amber-500/15"
+              className="rounded-lg border border-neutral-500/20 bg-neutral-500/5 px-2.5 py-1.5 text-[11px] font-medium text-neutral-400 hover:bg-neutral-500/15"
             >
               Edit
             </button>

@@ -4,15 +4,15 @@ import { createContext, useContext, useEffect, useCallback } from 'react';
 const ThemeContext = createContext(undefined);
 
 export function ThemeProvider({ children }) {
-  const theme = 'dark';
+  const theme = 'light';
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.documentElement.classList.add('dark');
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
   }, []);
 
   const toggle = useCallback(() => {
-    // No-op, dark mode is locked
+    // No-op, light mode is locked
   }, []);
 
   return (

@@ -167,11 +167,11 @@ export default function CategoryPage() {
         </p>
         <Link
           to="/"
-          className="rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300"
+          className="rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 border border-theme"
           style={{
-            backgroundColor: 'var(--accent-gold)',
+            backgroundColor: 'var(--text-primary)',
             color: 'var(--bg-primary)',
-            boxShadow: '0 4px 14px var(--accent-gold-glow)',
+            boxShadow: 'none',
           }}
         >
           Back to Home
@@ -207,7 +207,7 @@ export default function CategoryPage() {
                   {main}
                 </h1>
                 {sub && (
-                  <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-heading font-semibold tracking-wider text-amber-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                  <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-heading font-semibold tracking-wider text-neutral-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                     {sub}
                   </span>
                 )}
@@ -233,7 +233,7 @@ export default function CategoryPage() {
               Collection Pieces
             </h2>
             {artworks.some(art => art.is_fallback) && (
-              <span className="text-xs px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full">
+              <span className="text-xs px-3 py-1 bg-neutral-500/10 text-neutral-400 border border-neutral-500/20 rounded-full">
                 Interactive Fallback Previews Loaded
               </span>
             )}
@@ -252,8 +252,8 @@ export default function CategoryPage() {
                       onClick={() => setSelectedSubcategory(subcat)}
                       className="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 select-none cursor-pointer"
                       style={{
-                        backgroundColor: isActive ? 'var(--accent-gold)' : 'transparent',
-                        color: isActive ? '#ffffff' : 'var(--text-secondary)',
+                        backgroundColor: isActive ? 'var(--text-primary)' : 'transparent',
+                        color: isActive ? 'var(--bg-primary)' : 'var(--text-secondary)',
                         border: 'none',
                       }}
                     >
@@ -354,7 +354,8 @@ export default function CategoryPage() {
                   disabled={isSubmittingFeedback || !newFeedback.trim()}
                   className="rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
                   style={{
-                    backgroundColor: 'var(--accent-gold)',
+                    backgroundColor: 'var(--text-primary)',
+                    color: 'var(--bg-primary)',
                   }}
                 >
                   {isSubmittingFeedback ? 'Submitting...' : 'Submit Feedback'}

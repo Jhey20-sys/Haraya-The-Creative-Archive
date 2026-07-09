@@ -19,7 +19,7 @@ export default function MediaPlayer({ mediaUrl, mediaType, title, thumbnailUrl }
               loading="lazy"
             />
             {mediaType === 'sculpture' && (
-              <span className="absolute top-3 right-3 bg-amber-500/80 backdrop-blur-sm text-[10px] uppercase font-bold text-neutral-950 px-2.5 py-1 rounded-full tracking-wider">
+              <span className="absolute top-3 right-3 bg-neutral-800/80 backdrop-blur-sm text-[10px] uppercase font-bold text-white px-2.5 py-1 rounded-full tracking-wider border border-white/10">
                 3D Model
               </span>
             )}
@@ -67,7 +67,7 @@ export default function MediaPlayer({ mediaUrl, mediaType, title, thumbnailUrl }
               className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover mb-4 shadow-lg border border-white/10"
             />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 text-3xl mb-4 animate-pulse">
+            <div className="w-16 h-16 rounded-full bg-neutral-800/50 flex items-center justify-center text-white text-3xl mb-4 animate-pulse">
               🔊
             </div>
           )}
@@ -76,7 +76,7 @@ export default function MediaPlayer({ mediaUrl, mediaType, title, thumbnailUrl }
           <audio
             src={mediaUrl}
             controls
-            className="w-full max-w-sm accent-amber-500 rounded-lg"
+            className="w-full max-w-sm accent-white rounded-lg"
           />
         </div>
       );
@@ -109,10 +109,10 @@ export default function MediaPlayer({ mediaUrl, mediaType, title, thumbnailUrl }
             <div
               className="w-full h-full flex flex-col items-center justify-center gap-3 transition-colors duration-300 group-hover:bg-neutral-800"
               style={{
-                background: 'linear-gradient(135deg, var(--bg-surface) 0%, rgba(255,168,0,0.03) 100%)',
+                background: 'linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-surface-hover) 100%)',
               }}
             >
-              <FileText className="w-12 h-12 text-amber-500" strokeWidth={1.5} />
+              <FileText className="w-12 h-12 text-white" strokeWidth={1.5} />
               <span className="text-white text-sm font-semibold tracking-wide font-heading truncate max-w-[200px] px-2">{title}</span>
               <span className="text-[10px] uppercase font-bold tracking-wider opacity-40 text-theme-muted">
                 PDF Document
@@ -123,7 +123,7 @@ export default function MediaPlayer({ mediaUrl, mediaType, title, thumbnailUrl }
           {/* Hover Expand Badge */}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span className="bg-neutral-950/80 backdrop-blur-md text-xs py-2 px-4 rounded-xl border border-white/15 text-white flex items-center gap-2 font-medium">
-              <FileText className="w-4 h-4 text-amber-500" />
+              <FileText className="w-4 h-4 text-white" />
               Read Document
             </span>
           </div>

@@ -189,7 +189,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Artwork title..."
-              className="w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-300 focus:ring-1 focus:ring-amber-500/30"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-300 focus:ring-1 focus:ring-neutral-500/30"
               style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
             />
           </div>
@@ -204,7 +204,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Describe this artwork..."
               rows="3"
-              className="w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-300 resize-none focus:ring-1 focus:ring-amber-500/30"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-300 resize-none focus:ring-1 focus:ring-neutral-500/30"
               style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
             />
           </div>
@@ -225,7 +225,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                   setSubcategory(null);
                 }
               }}
-              className="w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-300 focus:ring-1 focus:ring-amber-500/30"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-300 focus:ring-1 focus:ring-neutral-500/30"
               style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
             >
               {categories.map((cat) => (
@@ -254,7 +254,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                     onClick={() => setSubcategory(opt.value)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-200 ${
                       subcategory === opt.value
-                        ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
+                        ? 'bg-neutral-800 text-white border-neutral-700'
                         : 'bg-transparent border-white/5 hover:border-white/15'
                     }`}
                     style={{ color: subcategory === opt.value ? undefined : 'var(--text-muted)' }}
@@ -285,7 +285,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                   }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize border transition-all duration-200 ${
                     mediaType === type
-                      ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
+                      ? 'bg-neutral-800 text-white border-neutral-700'
                       : 'bg-transparent border-white/5 hover:border-white/15'
                   }`}
                   style={{ color: mediaType === type ? undefined : 'var(--text-muted)' }}
@@ -310,7 +310,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
               onClick={() => fileInputRef.current?.click()}
               className={`relative cursor-pointer rounded-xl border-2 border-dashed p-6 text-center transition-all duration-300 ${
                 dragActive
-                  ? 'border-amber-500/50 bg-amber-500/5'
+                  ? 'border-neutral-500/50 bg-neutral-800/10'
                   : 'border-white/10 hover:border-white/20 bg-neutral-900/30'
               }`}
             >
@@ -334,7 +334,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                 <div className="space-y-2">
                   <div className="text-sm font-medium opacity-30" style={{ color: 'var(--text-muted)' }}>Upload</div>
                   <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                    Drag & drop a file here, or <span className="text-amber-500 font-medium">browse</span>
+                    Drag & drop a file here, or <span className="text-white font-medium hover:underline">browse</span>
                   </p>
                 </div>
               )}
@@ -355,7 +355,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                 onClick={() => thumbnailInputRef.current?.click()}
                 className={`relative cursor-pointer rounded-xl border-2 border-dashed p-6 text-center transition-all duration-300 ${
                   thumbnailDragActive
-                    ? 'border-amber-500/50 bg-amber-500/5'
+                    ? 'border-neutral-500/50 bg-neutral-800/10'
                     : 'border-white/10 hover:border-white/20 bg-neutral-900/30'
                 }`}
               >
@@ -383,14 +383,14 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                       className="mx-auto h-20 w-auto rounded border border-white/10 object-cover"
                     />
                     <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                      Drag & drop a new thumbnail here, or <span className="text-amber-500 font-medium">browse</span> to replace
+                      Drag & drop a new thumbnail here, or <span className="text-white font-medium hover:underline">browse</span> to replace
                     </p>
                   </div>
                 ) : (
                   <div className="space-y-2">
                     <div className="text-sm font-medium opacity-30" style={{ color: 'var(--text-muted)' }}>Upload Thumbnail</div>
                     <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                      Drag & drop an image here, or <span className="text-amber-500 font-medium">browse</span>
+                      Drag & drop an image here, or <span className="text-white font-medium hover:underline">browse</span>
                     </p>
                   </div>
                 )}

@@ -131,8 +131,8 @@ export function SpotlightNavbar({
                     "relative h-11 rounded-full transition-all duration-300 overflow-hidden flex items-center"
                 )}
                 style={{
-                    '--spotlight-color': isDark ? 'rgba(255,168,0,0.15)' : 'rgba(255,122,0,0.08)',
-                    '--ambience-color': isDark ? 'rgba(255,168,0,1)' : 'rgba(255,122,0,0.8)',
+                    '--spotlight-color': isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
+                    '--ambience-color': isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.5)',
                 }}
             >
                 {/* Content */}

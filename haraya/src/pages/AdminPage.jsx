@@ -140,9 +140,10 @@ export default function AdminPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-xl px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-xl px-8 py-3.5 text-sm font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60 border border-theme"
                   style={{
-                    backgroundColor: "var(--accent-gold)",
+                    backgroundColor: "var(--text-primary)",
+                    color: "var(--bg-primary)",
                   }}
                 >
                   {loading ? "Verifying..." : "Unlock Admin Mode"}

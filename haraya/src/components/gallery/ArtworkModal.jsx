@@ -219,7 +219,7 @@ useEffect(() => {
                     onClick={() => handleRatingSubmit(star)}
                     className={`text-2xl transition-all duration-200 ${
                       star <= (hoverRating || rating)
-                        ? 'text-amber-500 scale-110'
+                        ? 'text-white scale-110'
                         : 'text-neutral-700 hover:text-neutral-500'
                     } ${hasVoted ? 'cursor-default' : 'cursor-pointer'}`}
                   >

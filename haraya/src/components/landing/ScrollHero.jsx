@@ -167,13 +167,13 @@ export default function ScrollHero({
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/60 backdrop-blur-md">
             {/* Pulsing Logo Skeleton */}
             <div className="w-64 h-24 sm:w-96 sm:h-36 bg-neutral-900/40 rounded-2xl border border-white/5 animate-pulse flex items-center justify-center shadow-2xl">
-              <span className="text-amber-500/20 text-5xl sm:text-7xl font-kingston tracking-widest animate-pulse font-normal">M</span>
+              <span className="text-neutral-500/20 text-5xl sm:text-7xl font-kingston tracking-widest animate-pulse font-normal">H</span>
             </div>
 
             {/* Pulsing Text & Progress */}
             <div className="mt-8 flex flex-col items-center gap-2">
               <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 animate-pulse">
-                Entering Silid-Museo
+                Entering Haraya
               </span>
               {/* Progress bar */}
               <div className="h-1.5 w-48 overflow-hidden rounded-full bg-neutral-950 border border-white/5 mt-2">
@@ -181,7 +181,7 @@ export default function ScrollHero({
                   className="h-full rounded-full transition-all duration-200"
                   style={{
                     width: `${progress * 100}%`,
-                    backgroundColor: 'var(--accent-gold)',
+                    backgroundColor: 'var(--text-muted)',
                   }}
                 />
               </div>
@@ -196,7 +196,7 @@ export default function ScrollHero({
         <canvas
           ref={canvasRef}
           className="h-full w-full"
-          style={{ display: 'block', filter: 'blur(3px)' }}
+          style={{ display: 'block', filter: 'grayscale(100%) contrast(1.1) blur(3px)' }}
         />
 
         {/* Optional overlay content (title, CTA, etc.) */}

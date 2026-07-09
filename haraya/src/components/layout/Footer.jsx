@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import wordmarkImg from '../../assets/Wordmark.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -89,7 +88,7 @@ export default function Footer() {
 
           {/* Bottom minimal footer details */}
           <div className="flex flex-col sm:flex-row justify-between items-center pt-4 border-t border-[var(--border-subtle)] text-[11px]" style={{ color: 'var(--text-muted)' }}>
-            <p>&copy; {currentYear} silid-museo. All rights reserved.</p>
+            <p>&copy; {currentYear} Haraya. All rights reserved.</p>
             <Link
               to="/admin"
               className="hover:underline transition-colors duration-300 mt-2 sm:mt-0"
@@ -107,11 +106,9 @@ export default function Footer() {
             {/* Brand Column */}
             <div>
               <Link to="/" className="group mb-4 inline-flex items-center">
-                <img
-                  src={wordmarkImg}
-                  alt="silid-museo logo"
-                  className="h-18 w-auto object-contain transition-all duration-300 dark:invert-0 invert"
-                />
+                <span className="text-2xl font-bold tracking-[0.2em] text-theme-primary font-kingston uppercase">
+                  Haraya
+                </span>
               </Link>
               <p
                 className="mt-3 max-w-xs text-sm leading-relaxed"
@@ -182,7 +179,7 @@ export default function Footer() {
             style={{ borderTop: '1px solid var(--border-subtle)' }}
           >
             <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-              &copy; {currentYear} silid-museo. All rights reserved.
+              &copy; {currentYear} Haraya. All rights reserved.
             </p>
           </div>
         </div>

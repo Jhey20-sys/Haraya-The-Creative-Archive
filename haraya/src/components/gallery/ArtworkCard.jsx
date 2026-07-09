@@ -32,7 +32,7 @@ export default function ArtworkCard({ artwork, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/5"
+      className="group relative cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-neutral-500/10"
       style={{
         backgroundColor: 'var(--bg-surface)',
         borderColor: 'var(--border-subtle)',
@@ -51,7 +51,7 @@ export default function ArtworkCard({ artwork, onClick }) {
           <div 
             className="w-full h-full flex flex-col items-center justify-center gap-3 transition-colors duration-300 group-hover:bg-neutral-900"
             style={{ 
-              background: 'linear-gradient(135deg, var(--bg-surface) 0%, rgba(255,168,0,0.03) 100%)',
+              background: 'linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-surface-hover) 100%)',
             }}
           >
             {IconComponent ? (
@@ -79,7 +79,7 @@ export default function ArtworkCard({ artwork, onClick }) {
 
         {/* Fallback Preview Tag */}
         {is_fallback && (
-          <span className="absolute top-3 right-3 bg-amber-500/20 backdrop-blur-md text-[10px] font-bold text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+          <span className="absolute top-3 right-3 bg-neutral-500/20 backdrop-blur-md text-[10px] font-bold text-neutral-400 border border-neutral-500/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
             Preview
           </span>
         )}
@@ -108,7 +108,7 @@ export default function ArtworkCard({ artwork, onClick }) {
         {/* Card Footer: Rating stars & Details */}
         <div className="flex items-center justify-between border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
           <div className="flex items-center gap-1.5">
-            <span className="text-amber-500 text-sm">★</span>
+            <span className="text-neutral-400 text-sm">★</span>
             <span className="text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>
               {avgRating > 0 ? avgRating : 'No ratings'}
             </span>

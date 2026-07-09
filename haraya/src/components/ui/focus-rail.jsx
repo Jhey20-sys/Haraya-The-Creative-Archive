@@ -151,7 +151,7 @@ export function FocusRail({
             <img
               src={activeItem.imageSrc}
               alt=""
-              className="h-full w-full object-cover blur-3xl saturate-200"
+              className="h-full w-full object-cover blur-3xl grayscale opacity-30"
             />
             <div
               className="absolute inset-0"
@@ -225,11 +225,18 @@ export function FocusRail({
                   if (offset !== 0) setActive((p) => p + offset);
                 }}
               >
-                <img
-                  src={item.imageSrc}
-                  alt={item.title}
-                  className="h-full w-full rounded-2xl object-cover pointer-events-none"
-                />
+                {item.imageSrc ? (
+                  <img
+                    src={item.imageSrc}
+                    alt={item.title}
+                    className="h-full w-full rounded-2xl object-cover pointer-events-none"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-neutral-900/30 flex flex-col items-center justify-center border border-dashed border-neutral-700/50 rounded-2xl">
+                    <span className="text-5xl mb-3 opacity-20">🚪</span>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-400">Exhibition Door</span>
+                  </div>
+                )}
 
                 {/* Lighting layers */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
@@ -259,7 +266,7 @@ export function FocusRail({
                             {main}
                           </h3>
                           {sub && (
-                            <span className="text-xs md:text-sm font-heading font-medium tracking-wider text-amber-500/90 drop-shadow-sm">
+                            <span className="text-xs md:text-sm font-heading font-medium tracking-wider text-neutral-400 drop-shadow-sm">
                               {sub}
                             </span>
                           )}

@@ -1,7 +1,5 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import Particles from '@/components/ui/Particles';
-import wordmarkImg from '../assets/Wordmark.png';
 import ScrollReveal from '../components/ui/ScrollReveal';
 
 export default function AboutPage() {
@@ -57,20 +55,7 @@ export default function AboutPage() {
         }
       `}} />
 
-      {/* Particles background covering the entirety of the About page */}
-      <div className="fixed inset-0 w-screen h-screen pointer-events-none z-[-1] opacity-[0.08] dark:opacity-[0.2]">
-        <Particles
-          particleColors={["#ffdb6a"]}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.2}
-          particleBaseSize={100}
-          moveParticlesOnHover
-          alphaParticles={false}
-          disableRotation={false}
-          pixelRatio={1}
-        />
-      </div>
+
 
       {/* Header (stays static above the scrollable area) */}
       <header className="relative pt-28 pb-8 flex flex-col items-center justify-center text-center select-none z-10 shrink-0">
@@ -91,11 +76,9 @@ export default function AboutPage() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="relative z-10 px-6 animate-fade-in"
         >
-          <img
-            src={wordmarkImg}
-            alt="Silid Museo"
-            className="h-18 sm:h-22 md:h-26 w-auto object-contain mx-auto filter dark:brightness-110 dark:invert-0 invert"
-          />
+          <span className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[0.2em] text-theme-primary font-kingston uppercase">
+            Haraya
+          </span>
         </motion.div>
       </header>
 
@@ -114,7 +97,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-center"
             textClassName="!text-sm md:!text-base font-heading font-semibold text-theme-primary text-center tracking-wide"
           >
-            {"Silid-Museo Curatorial Guild - The official Curatorial Body of BS BIO 3B [Group 1]"}
+            {"Haraya Curatorial Guild - The official Curatorial Body of BS BIO 3B [Group 1]"}
           </ScrollReveal>
 
 
@@ -199,7 +182,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Finally, we arrive at Silid-Manlilikha (The Creators' Room). Silid Museo is not merely a collection of rooms, but a testament to collaborative human effort. This final space is dedicated to the group of creators and our subject instructor whose guidance, critique, and shared vision transformed a digital architecture into a living, breathing museum. It is a warm tribute to the creative bonds, hard work, and shared ideals that made this virtual sanctuary a reality."}
+            {"Finally, we arrive at Silid-Manlilikha (The Creators' Room). Haraya is not merely a collection of rooms, but a testament to collaborative human effort. This final space is dedicated to the group of creators and our subject instructor whose guidance, critique, and shared vision transformed a digital architecture into a living, breathing museum. It is a warm tribute to the creative bonds, hard work, and shared ideals that made this virtual sanctuary a reality."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -211,7 +194,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify pt-8 border-t border-theme-subtle"
             textClassName="!text-sm font-medium leading-relaxed text-theme-primary font-sans text-justify"
           >
-            {"At its core, the mission of Silid Museo remains to create an inclusive virtual space that celebrates artistic expression across all mediums, making art accessible, dialogic, and interactive for everyone."}
+            {"At its core, the mission of Haraya remains to create an inclusive virtual space that celebrates artistic expression across all mediums, making art accessible, dialogic, and interactive for everyone."}
           </ScrollReveal>
         </div>
       </div>
