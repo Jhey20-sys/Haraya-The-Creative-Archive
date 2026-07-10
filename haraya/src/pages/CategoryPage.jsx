@@ -183,45 +183,48 @@ export default function CategoryPage() {
   return (
     <div className="relative">
       {/* Category Header */}
-      <section className="sticky top-0 z-0 overflow-hidden w-full pt-32 pb-16 md:pt-44 md:pb-24">
+      <section className="relative overflow-hidden w-full pt-36 pb-20 md:pt-48 md:pb-28">
         {/* Background image overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-100"
-          style={{ backgroundImage: "url('/category-header-bg.png')" }}
+          style={{ backgroundImage: "url('/category-bg.png')" }}
         />
 
         {/* Gradient overlay to fade from top (navbar background) and to the page body at the bottom */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(10, 7, 5, 0.6) 0%, transparent 25%, transparent 60%, var(--bg-primary) 100%)',
+            background: 'linear-gradient(to bottom, var(--brown) 0%, transparent 25%, transparent 70%, var(--bg-primary) 100%), linear-gradient(to right, var(--brown) 35%, transparent 85%)',
           }}
         />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 text-left">
+        <div className="hero-container relative z-10">
           {(() => {
             const { main, sub } = parseCategoryName(category.name);
             return (
               <div className="mb-6 flex flex-col items-start gap-2">
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-none font-kingston tracking-wide text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                <span className="eyebrow text-[var(--gold-soft)] hero-eyebrow">
+                  {category.hryRef || "Collection"}
+                </span>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-none font-kingston tracking-wide text-white">
                   {main}
                 </h1>
                 {sub && (
-                  <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-heading font-semibold tracking-wider text-neutral-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                  <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-heading font-semibold tracking-wider text-neutral-400">
                     {sub}
                   </span>
                 )}
               </div>
             );
           })()}
-          <p className="max-w-3xl text-base md:text-lg leading-relaxed text-neutral-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] whitespace-pre-line">
+          <p className="max-w-3xl text-base md:text-lg leading-relaxed text-neutral-300 whitespace-pre-line font-serif">
             {dbCategory?.expanded_description || category?.expanded_description || category?.description}
           </p>
         </div>
       </section>
 
       <div 
-        className="relative z-10 rounded-t-2xl md:rounded-t-3xl shadow-[0_-15px_40px_rgba(0,0,0,0.9)] overflow-hidden"
+        className="relative overflow-hidden"
         style={{ backgroundColor: 'var(--bg-primary)' }}
       >
         {/* Artworks Display Section */}
@@ -317,45 +320,36 @@ export default function CategoryPage() {
       </section>
 
       {/* Category Level Feedback Section */}
-      <section className="py-16" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+      <section className="py-16 bg-[var(--bg-primary)] border-t border-[var(--border-subtle)]">
         <div className="mx-auto max-w-3xl px-6">
-          <h2 className="mb-2 text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
-            Exhibition Hall Feedback
-          </h2>
-          <p className="mb-8 text-sm" style={{ color: 'var(--text-muted)' }}>
-            Share your general thoughts, notes, or reviews on the {category.name} collection.
-          </p>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-heading tracking-wide mb-2 text-[var(--text-primary)]">
+              Exhibition Hall Feedback
+            </h2>
+            <p className="text-sm font-serif italic text-[var(--text-muted)] max-w-lg mx-auto">
+              Share your general thoughts, notes, or reviews on the {category.name} collection.
+            </p>
+          </div>
 
           {/* Feedback Submission Form */}
-          <div
-            className="rounded-2xl border p-6 mb-8"
-            style={{
-              borderColor: 'var(--border-subtle)',
-              backgroundColor: 'var(--bg-surface)',
-            }}
-          >
-            <form onSubmit={handleFeedbackSubmit}>
+          <div className="mb-12">
+            <form onSubmit={handleFeedbackSubmit} className="flex flex-col gap-4">
               <textarea
                 value={newFeedback}
                 onChange={(e) => setNewFeedback(e.target.value)}
-                className="w-full resize-none rounded-xl border p-4 text-sm outline-none transition-all duration-300 bg-neutral-900/40"
-                style={{
-                  borderColor: 'var(--border-subtle)',
-                  color: 'var(--text-primary)',
-                }}
+                className="w-full resize-none p-4 text-sm outline-none transition-all duration-300 bg-[var(--bg-surface)] border border-[var(--border-subtle)] focus:border-[var(--gold)] font-serif italic"
                 rows="3"
                 placeholder="Write your feedback for this hall here..."
+                style={{
+                  color: 'var(--text-primary)'
+                }}
                 required
               />
-              <div className="mt-4 flex justify-end">
+              <div className="flex justify-end">
                 <button
                   type="submit"
                   disabled={isSubmittingFeedback || !newFeedback.trim()}
-                  className="rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
-                  style={{
-                    backgroundColor: 'var(--text-primary)',
-                    color: 'var(--bg-primary)',
-                  }}
+                  className="feedback-submit-btn transition-all duration-300 disabled:opacity-50"
                 >
                   {isSubmittingFeedback ? 'Submitting...' : 'Submit Feedback'}
                 </button>
@@ -366,21 +360,22 @@ export default function CategoryPage() {
           {/* Category Feedback List */}
           <div className="space-y-4">
             {feedbackList.length === 0 ? (
-              <p className="text-center text-xs italic py-6" style={{ color: 'var(--text-muted)' }}>
+              <p className="text-center text-xs italic py-8 text-[var(--text-muted)] font-serif">
                 No feedback submitted yet.
               </p>
             ) : (
               feedbackList.map((feedback) => (
                 <div
                   key={feedback.id}
-                  className="p-4 rounded-xl border text-xs leading-relaxed"
+                  className="p-5 border-l-2 text-xs leading-relaxed bg-[var(--bg-surface)] border-[var(--border-subtle)]"
                   style={{
-                    backgroundColor: 'var(--bg-surface)',
-                    borderColor: 'var(--border-subtle)',
+                    borderLeftColor: 'var(--gold)',
                   }}
                 >
-                  <p style={{ color: 'var(--text-secondary)' }}>{feedback.comment_text}</p>
-                  <span className="block mt-2 text-[10px] text-right" style={{ color: 'var(--text-muted)' }}>
+                  <p className="font-serif text-[13px] leading-relaxed text-[var(--text-secondary)]">
+                    "{feedback.comment_text}"
+                  </p>
+                  <span className="block mt-3 text-[10px] text-right font-mono tracking-wider text-[var(--text-muted)]">
                     {new Date(feedback.created_at).toLocaleDateString(undefined, {
                       month: 'short',
                       day: 'numeric',

@@ -707,9 +707,112 @@
 }
 
 /* ---------- about teaser ---------- */
-#about-teaser {
+.about-teaser-section {
   position: relative;
   z-index: 10;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background-image:
+    linear-gradient(to bottom, transparent 60%, var(--bg-primary) 100%),
+    linear-gradient(to right, var(--bg-primary) 35%, transparent 85%),
+    url('/Header-BG.png');
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-teaser-section .about-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 4.5vw, 44px);
+  line-height: 1.05;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.about-teaser-section .about-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.about-teaser-section .tagline {
+  margin-top: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--terracotta);
+  position: relative;
+  z-index: 2;
+}
+
+.about-teaser-section .lede {
+  max-width: 560px;
+  margin: 22px 0 0;
+  font-size: 18px;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- gallery background style ---------- */
+.gallery-bg-style {
+  background-color: var(--brown);
+  background-image: url('/mask-group.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: overlay;
+  background-size: 600% auto;
+}
+@media (min-width: 768px) {
+  .gallery-bg-style {
+    background-size: 185% auto;
+  }
+}
+
+/* ---------- feedback submit buttons ---------- */
+.feedback-submit-btn {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  padding: 10px 24px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.feedback-submit-btn:hover {
+  background: var(--brown) !important;
+  color: #ffffff !important;
+  border-color: var(--brown) !important;
+}
+
+.feedback-submit-btn-light {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--cream);
+  padding: 8px 20px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.feedback-submit-btn-light:hover {
+  background: var(--brown-soft) !important;
+  color: #ffffff !important;
+  border-color: var(--brown-soft) !important;
 }
 
 /* ---------- footer ---------- */
@@ -841,4 +944,304 @@ footer {
 
 .card:hover .enter .arrow {
   transform: translateX(5px);
+}
+
+/* ---------- elegant carousel ---------- */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 400px;
+  padding: 30px 24px;
+  border-radius: 8px;
+  background: rgba(44, 26, 18, 0.25);
+  border: 1px solid rgba(200, 155, 60, 0.15);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.carousel-bg-wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.8s ease;
+}
+
+.carousel-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .carousel-inner {
+    flex-direction: row;
+    align-items: center;
+    min-height: 360px;
+  }
+}
+
+.carousel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-content-inner {
+  max-width: 500px;
+}
+
+.carousel-collection-num {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-collection-num.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-num-line {
+  width: 24px;
+  height: 1px;
+  background: var(--gold-soft);
+}
+
+.carousel-num-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold-soft);
+}
+
+.carousel-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(244, 232, 208, 0.75);
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-description.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-nav-arrows {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.carousel-arrow-btn {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(244, 232, 208, 0.25);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-arrow-btn:hover {
+  background: var(--cream);
+  color: var(--brown);
+  border-color: var(--cream);
+  transform: scale(1.05);
+}
+
+.carousel-image-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: scale(0.95) rotate(-1deg);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-image-frame.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 6s ease;
+}
+
+.carousel-image-frame.visible:hover .carousel-image {
+  transform: scale(1.06);
+}
+
+.carousel-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.carousel-frame-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.carousel-frame-corner--tl {
+  top: -8px;
+  left: -8px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+.carousel-frame-corner--br {
+  bottom: -8px;
+  right: -8px;
+  border-bottom-style: solid;
+  border-right-style: solid;
+  border-left-style: none;
+  border-top-style: none;
+}
+
+.carousel-progress-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(244, 232, 208, 0.1);
+  padding-top: 24px;
+}
+
+.carousel-progress-item {
+  flex: 1;
+  min-width: 100px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.carousel-progress-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(244, 232, 208, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+}
+
+.carousel-progress-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 208, 0.45);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.carousel-progress-item.active .carousel-progress-label {
+  color: var(--cream);
+}
+
+.carousel-progress-item:hover .carousel-progress-label {
+  color: var(--gold-soft);
+}
+
+/* Transition Animations */
+.carousel-collection-num.transitioning {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.carousel-title.transitioning {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.carousel-subtitle.transitioning {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.carousel-description.transitioning {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.carousel-image-frame.transitioning {
+  opacity: 0;
+  transform: scale(0.97) rotate(0.5deg);
 }

@@ -7,9 +7,14 @@ export default function Footer() {
 
   return (
     <footer
-      className="transition-colors duration-300"
+      className="transition-colors duration-300 relative"
       style={{
         backgroundColor: 'var(--brown)',
+        backgroundImage: "url('/mask-group.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        backgroundBlendMode: 'overlay',
         color: 'rgba(244, 232, 208, 0.65)',
         borderTop: '1px solid var(--border-subtle)',
       }}

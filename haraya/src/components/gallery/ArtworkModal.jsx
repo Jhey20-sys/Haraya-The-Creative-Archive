@@ -171,8 +171,11 @@ useEffect(() => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 md:p-6 backdrop-blur-sm animate-fade-in">
       {/* Modal Container */}
       <div 
-        className="relative flex h-full max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border bg-neutral-950 shadow-2xl md:flex-row"
-        style={{ borderColor: 'var(--border-subtle)' }}
+        className="relative flex h-full max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border shadow-2xl md:flex-row gallery-bg-style"
+        style={{
+          borderColor: 'var(--border-subtle)',
+          color: 'var(--cream)',
+        }}
       >
         {/* Close Button */}
         <button
@@ -189,20 +192,20 @@ useEffect(() => {
         </div>
 
         {/* Right Side: Info & Interactions */}
-        <div className="flex w-full flex-col md:w-[400px] h-full overflow-y-auto p-6 md:p-8 bg-neutral-950">
+        <div className="flex w-full flex-col md:w-[400px] h-full overflow-y-auto p-6 md:p-8 bg-transparent">
           {/* Header */}
           <div className="mb-6 mt-4">
-            <h2 className="text-2xl font-bold mb-3 tracking-tight" style={{ color: 'var(--text-primary)' }}>
+            <h2 className="text-2xl font-bold mb-3 tracking-tight" style={{ color: 'var(--cream)' }}>
               {title}
             </h2>
-            <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--text-muted)' }}>
+            <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'rgba(244, 232, 208, 0.75)' }}>
               {description}
             </p>
           </div>
 
           {/* Rating Section */}
-          <div className="mb-6 p-4 rounded-xl border" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}>
-            <h3 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>
+          <div className="mb-6 p-4 rounded-xl border" style={{ backgroundColor: 'rgba(0, 0, 0, 0.25)', borderColor: 'var(--border-subtle)' }}>
+            <h3 className="text-sm font-semibold mb-2" style={{ color: 'var(--gold-soft)' }}>
               {hasVoted ? 'Your Rating' : 'Rate this Piece'}
             </h3>
             
@@ -236,7 +239,7 @@ useEffect(() => {
             </div>
             
             {/* Average Rating details */}
-            <div className="mt-3 flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
+            <div className="mt-3 flex items-center gap-2 text-xs" style={{ color: 'rgba(244, 232, 208, 0.65)' }}>
               <span>Average:</span>
               <span className="font-semibold text-white">
                 {artwork.artwork_ratings_summary?.average_rating || 0} / 5
@@ -250,7 +253,7 @@ useEffect(() => {
 
           {/* Feedback/Comments Section */}
           <div className="flex-1 flex flex-col min-h-[250px]">
-            <h3 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-secondary)' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: 'var(--gold-soft)' }}>
               Feedback & Discussion
             </h3>
 
@@ -265,17 +268,14 @@ useEffect(() => {
                   className="w-full rounded-xl border p-3 text-xs outline-none transition-all duration-300 resize-none bg-neutral-900/60"
                   style={{
                     borderColor: 'var(--border-subtle)',
-                    color: 'var(--text-primary)',
+                    color: 'var(--cream)',
                   }}
                   required
                 />
                 <button
                   type="submit"
                   disabled={isSubmittingComment || !newComment.trim()}
-                  className="self-end rounded-lg px-4 py-1.5 text-xs font-semibold text-white transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
-                  style={{
-                    backgroundColor: 'var(--accent-gold)',
-                  }}
+                  className="self-end feedback-submit-btn-light transition-all duration-300 disabled:opacity-50"
                 >
                   {isSubmittingComment ? 'Sending...' : 'Post Comment'}
                 </button>
@@ -285,7 +285,7 @@ useEffect(() => {
             {/* Comments List */}
             <div className="flex-1 overflow-y-auto space-y-3 pr-1 max-h-[200px]">
               {comments.length === 0 ? (
-                <p className="text-xs text-center italic py-6" style={{ color: 'var(--text-muted)' }}>
+                <p className="text-xs text-center italic py-6" style={{ color: 'rgba(244, 232, 208, 0.65)' }}>
                   No comments yet. Be the first to share!
                 </p>
               ) : (
@@ -294,12 +294,12 @@ useEffect(() => {
                     key={comment.id}
                     className="p-3 rounded-lg border text-[11px] leading-relaxed"
                     style={{
-                      backgroundColor: 'var(--bg-primary)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
                       borderColor: 'var(--border-subtle)',
                     }}
                   >
-                    <p style={{ color: 'var(--text-primary)' }}>{comment.comment_text}</p>
-                    <span className="block mt-1 text-[9px] text-right" style={{ color: 'var(--text-muted)' }}>
+                    <p style={{ color: 'rgba(244, 232, 208, 0.9)' }}>{comment.comment_text}</p>
+                    <span className="block mt-1 text-[9px] text-right" style={{ color: 'rgba(244, 232, 208, 0.45)' }}>
                       {new Date(comment.created_at).toLocaleDateString(undefined, {
                         month: 'short',
                         day: 'numeric',
