@@ -1,6 +1,9 @@
 console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
+
 const FUNCTION_URL =
   `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin`;
+
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 function getAdminToken() {
   return sessionStorage.getItem("adminToken");
@@ -16,6 +19,8 @@ export async function adminLogin(code) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
     },
     body: JSON.stringify({ code }),
   });
@@ -67,6 +72,7 @@ export async function adminFetch(
       ...options,
       headers: {
         ...(options.headers || {}),
+        "apikey": SUPABASE_ANON_KEY,
         Authorization: `Bearer ${token}`,
       },
     }
