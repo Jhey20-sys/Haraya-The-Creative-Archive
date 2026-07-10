@@ -12,15 +12,21 @@ export async function getArtworksByCategory(categoryId) {
   if (!artworksData || artworksData.length === 0) return [];
 
   const artworkIds = artworksData.map((a) => a.id);
-  const { data: ratingsData, error: ratingsError } = await supabase
-    .from('artwork_ratings_summary')
-    .select('artwork_id, average_rating, rating_count')
-    .in('artwork_id', artworkIds);
-  if (ratingsError) throw ratingsError;
 
-  const ratingsMap = new Map(
-    (ratingsData || []).map((r) => [r.artwork_id, r])
-  );
+  // Ratings are supplementary — if this fails (missing view, stale
+  // schema cache, RLS hiccup, etc.) we still want the artworks
+  // themselves to render, just without rating numbers attached.
+  let ratingsMap = new Map();
+  try {
+    const { data: ratingsData, error: ratingsError } = await supabase
+      .from('artwork_ratings_summary')
+      .select('artwork_id, average_rating, rating_count')
+      .in('artwork_id', artworkIds);
+    if (ratingsError) throw ratingsError;
+    ratingsMap = new Map((ratingsData || []).map((r) => [r.artwork_id, r]));
+  } catch (err) {
+    console.warn('Failed to load ratings summary (artworks will still display):', err.message);
+  }
 
   return artworksData.map((art) => ({
     ...art,
@@ -36,12 +42,20 @@ export async function getArtworkById(artworkId) {
     .single();
   if (artError) throw artError;
 
-  const { data: rating, error: ratingError } = await supabase
-    .from('artwork_ratings_summary')
-    .select('average_rating, rating_count')
-    .eq('artwork_id', artworkId)
-    .maybeSingle();
-  if (ratingError) throw ratingError;
+  // Same resilience here — a missing/broken ratings summary shouldn't
+  // prevent the artwork detail itself from loading.
+  let rating = null;
+  try {
+    const { data, error: ratingError } = await supabase
+      .from('artwork_ratings_summary')
+      .select('average_rating, rating_count')
+      .eq('artwork_id', artworkId)
+      .maybeSingle();
+    if (ratingError) throw ratingError;
+    rating = data;
+  } catch (err) {
+    console.warn('Failed to load rating for artwork (artwork will still display):', err.message);
+  }
 
   return { ...art, artwork_ratings_summary: rating };
 }

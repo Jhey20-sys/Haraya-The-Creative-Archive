@@ -1,20 +1,23 @@
 import { useState, useRef } from 'react';
 import { uploadMedia, detectMediaType } from '../../services/storage.js';
 import { addArtwork, updateArtwork } from '../../services/artworks.js';
-import categories from '../../data/categoryConfig.js';
 
 /**
  * Modal form for adding or editing an artwork (FR-5.3, FR-5.4).
+ * - categories: real category rows from Supabase, passed down from
+ *   AdminDashboardPage (mergedCategories). Never import the static
+ *   categoryConfig.js here directly — its `id` field is NOT a real
+ *   database UUID and will trigger a foreign key violation on insert.
  * - Add mode: categoryId is passed, artwork is null
  * - Edit mode: artwork object is passed with existing data
  */
-export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
+export default function ArtworkForm({ artwork, categoryId, categories, onClose, onSaved }) {
   const isEdit = !!artwork;
 
   const [title, setTitle] = useState(artwork?.title || '');
   const [description, setDescription] = useState(artwork?.description || '');
   const [selectedCategoryId, setSelectedCategoryId] = useState(
-    categoryId || artwork?.category_id || categories[0]?.id || ''
+    categoryId || artwork?.category_id || categories?.[0]?.id || ''
   );
   const [subcategory, setSubcategory] = useState(artwork?.subcategory || null);
   const [mediaType, setMediaType] = useState(artwork?.media_type || 'image');
@@ -230,7 +233,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
             >
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
-                  {cat.icon} {cat.name}
+                  {cat.icon ? `${cat.icon} ` : ''}{cat.name}
                 </option>
               ))}
             </select>
@@ -266,7 +269,6 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
             </div>
           )}
 
-          {/* Media Type */}
           {/* Media Type */}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider mb-1.5" style={{ color: 'var(--text-muted)' }}>

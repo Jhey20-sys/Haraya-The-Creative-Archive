@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useModal } from '../context/ModalContext.jsx';
 import { Music, Video, FileText, Shapes, AlignLeft } from 'lucide-react';
-import categories from '../data/categoryConfig.js';
+import staticCategories from '../data/categoryConfig.js';
 import { getCategories } from '../services/categories.js';
 import { getArtworksByCategory, deleteArtwork } from '../services/artworks.js';
 import { deleteMedia } from '../services/storage.js';
@@ -23,17 +23,46 @@ export default function AdminDashboardPage() {
   // ── Global State ───────────────────────────────────
   const [activeTab, setActiveTab] = useState('artworks');
 
+  // ── Real categories from Supabase (source of truth for all ids) ──
+  const [dbCategories, setDbCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+
   // ── Artworks Tab State ─────────────────────────────
-  const [selectedCategoryId, setSelectedCategoryId] = useState(categories[0]?.id || '');
+  const [selectedCategoryId, setSelectedCategoryId] = useState('');
   const [artworks, setArtworks] = useState([]);
   const [loadingArtworks, setLoadingArtworks] = useState(false);
   const [showArtworkForm, setShowArtworkForm] = useState(false);
   const [editingArtwork, setEditingArtwork] = useState(null);
   const [deletingArtworkId, setDeletingArtworkId] = useState(null);
 
-  // ── Categories Tab State ───────────────────────────
-  const [dbCategories, setDbCategories] = useState([]);
-  const [loadingCategories, setLoadingCategories] = useState(false);
+  // ── Load categories from DB once, on mount ─────────
+  // This is the single source of truth for category ids across the
+  // whole dashboard. categoryConfig.js is only ever used for display
+  // metadata (icons) via slug lookup — never for ids.
+  const loadCategories = useCallback(async () => {
+    setLoadingCategories(true);
+    try {
+      const data = await getCategories();
+      setDbCategories(data || []);
+      setSelectedCategoryId((prev) => {
+        if (prev && data.some((c) => c.id === prev)) return prev;
+        return data?.[0]?.id || '';
+      });
+    } catch (err) {
+      // Logged as the full error object (not just .message) so the
+      // real Supabase error — e.g. a bad column name in .order(), or
+      // an RLS policy block — is visible in the console rather than
+      // silently swallowed.
+      console.error('FULL categories load error:', err);
+      setDbCategories([]);
+    } finally {
+      setLoadingCategories(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
 
   // ── Load artworks when category changes ────────────
   const loadArtworks = useCallback(async () => {
@@ -53,24 +82,6 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     if (activeTab === 'artworks') loadArtworks();
   }, [activeTab, loadArtworks]);
-
-  // ── Load categories from DB ────────────────────────
-  const loadCategories = useCallback(async () => {
-    setLoadingCategories(true);
-    try {
-      const data = await getCategories();
-      setDbCategories(data || []);
-    } catch (_err) {
-      console.warn('Failed to load categories from DB, using local config');
-      setDbCategories([]);
-    } finally {
-      setLoadingCategories(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (activeTab === 'categories') loadCategories();
-  }, [activeTab, loadCategories]);
 
   // ── Handlers ───────────────────────────────────────
   const handleLogout = () => {
@@ -102,10 +113,11 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Merge local config with DB data for categories tab
-  const mergedCategories = categories.map((localCat) => {
-    const dbCat = dbCategories.find((d) => d.id === localCat.id);
-    return dbCat ? { ...localCat, ...dbCat } : localCat;
+  // Merge local config (icons/display copy) with DB data, matched by
+  // slug — NOT id, since the static config's id is never a real DB id.
+  const mergedCategories = dbCategories.map((dbCat) => {
+    const localCat = staticCategories.find((c) => c.slug === dbCat.slug);
+    return localCat ? { ...localCat, ...dbCat } : dbCat;
   });
 
   return (
@@ -204,11 +216,13 @@ export default function AdminDashboardPage() {
                   </label>
                   <select
                     value={selectedCategoryId}
+                    disabled={loadingCategories}
                     onChange={(e) => setSelectedCategoryId(e.target.value)}
                     className="rounded-xl border px-4 py-2.5 text-sm outline-none transition-all duration-200 focus:ring-1 focus:ring-amber-500/30"
                     style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
                   >
-                    {categories.map((cat) => (
+                    {loadingCategories && <option>Loading…</option>}
+                    {mergedCategories.map((cat) => (
                       <option key={cat.id} value={cat.id}>
                         {cat.name}
                       </option>
@@ -284,10 +298,10 @@ export default function AdminDashboardPage() {
                         {/* Preview Thumbnail */}
                         <div className="w-14 h-10 rounded-lg overflow-hidden bg-neutral-900 border border-white/5 shrink-0 flex items-center justify-center">
                           {art.thumbnail_url || art.media_type === 'image' ? (
-                            <img 
-                              src={art.thumbnail_url || art.media_url} 
-                              alt={art.title} 
-                              className="h-full w-full object-cover" 
+                            <img
+                              src={art.thumbnail_url || art.media_url}
+                              alt={art.title}
+                              className="h-full w-full object-cover"
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center bg-neutral-950">
@@ -395,6 +409,7 @@ export default function AdminDashboardPage() {
         <ArtworkForm
           artwork={editingArtwork}
           categoryId={selectedCategoryId}
+          categories={mergedCategories}
           onClose={() => { setShowArtworkForm(false); setEditingArtwork(null); }}
           onSaved={loadArtworks}
         />
