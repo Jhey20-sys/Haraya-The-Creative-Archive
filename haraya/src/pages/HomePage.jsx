@@ -43,21 +43,46 @@ export default function HomePage() {
     loadCategories();
   }, []);
 
+  useEffect(() => {
+    const section = document.getElementById('categories');
+    if (!section) return;
+
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const xOffset = (clientX - innerWidth / 2) / (innerWidth / 2);
+      const yOffset = (clientY - innerHeight / 2) / (innerHeight / 2);
+      
+      const maxMove = 20; // subtle movement of 20px max
+      const moveX = xOffset * maxMove;
+      const moveY = yOffset * maxMove;
+      
+      section.style.setProperty('--mouse-x', `${moveX}px`);
+      section.style.setProperty('--mouse-y', `${moveY}px`);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <div className="relative">
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-ring"></div>
-        <div className="hero-ring ring2"></div>
-        <span className="eyebrow hero-eyebrow">The Creative Archive</span>
-        <h1>HAR<em>A</em>YA</h1>
-        <p className="tagline">Inspired by Tradition, Created for Tomorrow</p>
-        <p className="lede font-serif">
-          A living collection of art, sound, and story — gathered across seven mediums and kept open for anyone curious enough to look closer.
-        </p>
-        <div className="hero-actions">
-          <a className="btn btn-primary" href="#categories">Enter the Archive</a>
-          <Link className="btn btn-secondary" to="/about">Our Story</Link>
+        <div className="hero-container">
+          <span className="eyebrow hero-eyebrow">The Creative Archive</span>
+          <h1>HAR<em>A</em>YA</h1>
+          <p className="tagline">Inspired by Tradition, Created for Tomorrow</p>
+          <p className="lede font-serif">
+            A living collection of art, sound, and story — gathered across seven mediums and kept open for anyone curious enough to look closer.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#categories">Enter the Archive</a>
+            <Link className="btn btn-secondary" to="/about">Our Story</Link>
+          </div>
         </div>
         <div className="scroll-cue">
           <span className="line"></span>Scroll
@@ -65,8 +90,23 @@ export default function HomePage() {
       </section>
 
       {/* ARCHIVE INDEX (CATEGORIES GRID) */}
-      <section className="archive-section py-24 px-6 md:px-12 border-t border-[var(--border-subtle)]" id="categories">
-        <div className="max-w-7xl mx-auto">
+      <section className="archive-section px-6 md:px-12" id="categories">
+        {/* Floating Bokeh Particles */}
+        <div className="particles-container">
+          {Array.from({ length: 25 }).map((_, i) => {
+            const style = {
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 6 + 2}px`,
+              height: `${Math.random() * 6 + 2}px`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${Math.random() * 20 + 10}s`,
+            };
+            return <span key={i} className="particle" style={style} />;
+          })}
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-16 text-center">
             <span className="eyebrow mb-3 block">Seven Mediums, One Collection</span>
             <h2 className="text-3xl md:text-5xl font-heading tracking-wide text-[var(--cream)] mb-4">The Index</h2>

@@ -220,9 +220,8 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      {/* Main Body Content - overlaps the sticky header on scroll */}
       <div 
-        className="relative z-10 rounded-t-[32px] md:rounded-t-[48px] shadow-[0_-15px_40px_rgba(0,0,0,0.9)] overflow-hidden"
+        className="relative z-10 rounded-t-2xl md:rounded-t-3xl shadow-[0_-15px_40px_rgba(0,0,0,0.9)] overflow-hidden"
         style={{ backgroundColor: 'var(--bg-primary)' }}
       >
         {/* Artworks Display Section */}
