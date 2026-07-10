@@ -1,3 +1,4 @@
+console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
 const FUNCTION_URL =
   `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin`;
 
