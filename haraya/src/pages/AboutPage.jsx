@@ -110,7 +110,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Our journey begins in Silid-Lona (The Canvas Room). Here, the boundaries of visual creation are expanded by juxtaposing the organic with the digital. In one light, we showcase hand-drawn illustrations that document the artist's personal thoughts, raw observations, and immediate experiences of a fleeting moment through the purity of line, form, and composition. In another, we explore the frontiers of technology with digital paintings co-created with artificial intelligence. The centerpiece—a digital painting inspired by the 128th Philippine Independence Day—translates semantic artist descriptions into complex visual allegories. Together, they invite the viewer to reflect on the intersection of human intentionality and synthetic intelligence."}
+            {"Our journey begins with Photography. Here, everyday moments and frozen light are gathered for a second look. Each photograph captures the raw interaction between subject, shadows, and perspective, documenting passing frames of time with precision and care."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -122,7 +122,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Moving deeper, we enter the acoustic sanctuary of Silid-Tinig (The Audio Room). In this space, sound and original songwriting become instruments of critical reflection and social advocacy. The highlight of this room is the original composition \"Hindi Kami Kaaway,\" a poignant sonic response to the struggles of red-tagging. Through evocative melodies and lyrics, the piece illuminates the human cost of false accusations, red-tagging, and social labeling, urging listeners to reflect on the human cost and the importance of protecting truth, dignity, and justice."}
+            {"Next, we explore Digital Art. This room highlights works built pixel by pixel, tracing the boundary where technical software meets creative imagination. From concept illustrations to digital paintings, these visual compositions demonstrate the co-existence of technology and artistic expression."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -134,7 +134,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"In Silid-Salin (The Transcreation Room), the boundary between static canvas and live performance is dissolved. This space is dedicated to the art of transcreation—the adaptation of works across different media. It features our original musical play, Larong Pinoy, inspired by the heritage paintings of Rico Doronio. The narrative follows a modern child who is magically transported into the painted canvas by her grandmother, learning to play traditional Filipino games like luksong baka, patintero, luksong tinik, and tumbang preso. By bringing these painted scenes to life through music, storytelling, and performance, the production explores the value of play, memory, and culture across generations."}
+            {"We then enter Traditional & Painting. This drawer holds the archive's oldest creative language: brush, canvas, and pigment. From oil colors and acrylics to hand-drawn sketches capturing line, form, and raw observation, this collection honors the timeless tactility of the canvas."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -146,7 +146,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Silid-Kasaysayan (The History Room) provides the intellectual foundation of our journey, tracing the visual styles and techniques that have defined human history. This curated presentation walks visitors through the epochal shifts of art history—from the primal markings of Prehistoric Art and the symbolic monuments of Egyptian Art to the architectural mastery of Classical Greece and Rome, the spiritual depth of Medieval Art, and the humanist revolutions of the Renaissance and Mannerism. It offers a structured lens through which we can appreciate the historical currents that still influence our modern aesthetics."}
+            {"Further along, we encounter Sculpture & 3D. Here, artistic ideas are given physical and virtual form, modeled in digital spaces or shaped using sustainable, recycled materials. These three-dimensional works bridge historical proportions with contemporary architectural preservation."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -158,7 +158,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Physicality and materiality take center stage in Silid-Espasyo (The Spatial Room). Dedicated to three-dimensional expression and installation art, this room features a scale model of an Ancient Greek temple. Crafted entirely from discarded cardboard and recycled materials, this project demonstrates how classical architectural principles can be reimagined through a modern lens of ecological sustainability. It bridges the ancient past and the green future, proving that monumental design can be built upon mindful preservation."}
+            {"We step into the acoustic sanctuary of Music & Audio. Sound, composition, and original songwriting are compiled here as instruments of reflection, featuring original compositions and tunes that respond to contemporary themes."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -170,7 +170,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"In Silid-Aninag (The Screening Room), light and time weave cinematic narratives. This space features moving image and video content, capturing temporal beauty and visual storytelling that cannot be held in a single frame."}
+            {"In Film & Video, time and movement weave cinematic narratives. This screening room brings visual storytelling, motion edits, and sound design together into a single, cohesive cinematic experience."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -182,7 +182,7 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Finally, we arrive at Silid-Manlilikha (The Creators' Room). Haraya is not merely a collection of rooms, but a testament to collaborative human effort. This final space is dedicated to the group of creators and our subject instructor whose guidance, critique, and shared vision transformed a digital architecture into a living, breathing museum. It is a warm tribute to the creative bonds, hard work, and shared ideals that made this virtual sanctuary a reality."}
+            {"Finally, we arrive at Writing & Poetry. Dedicated to words kept for their own sake, this section documents written reflection, verse, and creative storytelling, keeping thoughts alive for future readers."}
           </ScrollReveal>
 
           <ScrollReveal

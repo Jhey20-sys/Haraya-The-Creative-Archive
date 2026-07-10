@@ -1,24 +1,14 @@
 /**
- * Pre-populated fallback mock artworks matching docs/categories-details.md.
+ * Pre-populated fallback mock artworks matching the Haraya Creative Archive layout.
  * These display if no database entries are found in Supabase.
  * Stock images have been removed so only database-synced images are loaded.
  */
 export const fallbackArtworks = {
-  'silid-lona': [
+  'photography': [
     {
-      id: 'mock-lona-1',
-      title: 'Kalayaan at Teknolohiya (AI-Generated Painting)',
-      description: 'An AI-generated digital painting inspired by the 128th Philippine Independence Day. Demonstrates the coordination of technology and creative expression by translating descriptive prompts into visual compositions.',
-      media_url: null,
-      media_type: 'image',
-      thumbnail_url: null,
-      created_at: new Date('2026-06-12').toISOString(),
-      is_fallback: true,
-    },
-    {
-      id: 'mock-lona-2',
-      title: 'Saglit na Pagninilay (Hand-Drawn Sketch)',
-      description: "A hand-drawn sketch reflecting the artist's personal thoughts, observations, and ideas captured in a single moment through line, form, and composition.",
+      id: 'mock-photo-1',
+      title: 'Frozen Light (Chiaroscuro Study)',
+      description: 'A photographic study of light and shadow, capturing architectural angles in early morning sunlight.',
       media_url: null,
       media_type: 'image',
       thumbnail_url: null,
@@ -26,45 +16,45 @@ export const fallbackArtworks = {
       is_fallback: true,
     }
   ],
-  'silid-tinig': [
+  'digital-art': [
     {
-      id: 'mock-tinig-1',
-      title: 'Hindi Kami Kaaway (Original Composition)',
-      description: 'An original musical composition and song responding to the issue of red-tagging and its impact on innocent communities. It invites listeners to reflect on truth, dignity, and justice.',
-      media_url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', // Safe demo audio url
-      media_type: 'audio',
-      thumbnail_url: null,
-      created_at: new Date('2026-07-02').toISOString(),
-      is_fallback: true,
-    }
-  ],
-  'silid-salin': [
-    {
-      id: 'mock-salin-1',
-      title: 'Larong Pinoy (Original Musical Play)',
-      description: 'A theatrical and musical adaptation inspired by the paintings of Rico Doronio. Follows a modern child transported into the traditional game scenes (luksong baka, patintero, luksong tinik, tumbang preso) introduced by her grandmother.',
-      media_url: 'https://assets.mixkit.co/videos/preview/mixkit-hand-playing-guitar-under-neon-light-4720-large.mp4', // Safe demo video url
-      media_type: 'video',
+      id: 'mock-digital-1',
+      title: 'Larong Pinoy Concept Art',
+      description: 'Digital illustration and concept sketches adapting traditional Filipino games into stylized character designs.',
+      media_url: null,
+      media_type: 'image',
       thumbnail_url: null,
       created_at: new Date('2026-07-03').toISOString(),
       is_fallback: true,
     }
   ],
-  'silid-kasaysayan': [
+  'traditional-painting': [
     {
-      id: 'mock-kasaysayan-1',
-      title: 'Timeline of Art History (Presentation Overview)',
-      description: 'An educational slide presentation tracing art development from Prehistoric, Egyptian, Classical (Greek & Roman), Medieval, Renaissance to Mannerism. Showcases styles, architecture, and defining techniques.',
+      id: 'mock-painting-1',
+      title: 'Kalayaan at Teknolohiya (AI-Generated Painting)',
+      description: 'An AI-generated digital painting inspired by the 128th Philippine Independence Day. Demonstrates the coordination of technology and creative expression by translating descriptive prompts into visual compositions.',
       media_url: null,
       media_type: 'image',
       thumbnail_url: null,
-      created_at: new Date('2026-07-04').toISOString(),
+      created_at: new Date('2026-06-12').toISOString(),
       is_fallback: true,
+      subcategory: 'Painting',
+    },
+    {
+      id: 'mock-painting-2',
+      title: 'Saglit na Pagninilay (Hand-Drawn Sketch)',
+      description: "A hand-drawn sketch reflecting the artist's personal thoughts, observations, and ideas captured in a single moment through line, form, and composition.",
+      media_url: null,
+      media_type: 'image',
+      thumbnail_url: null,
+      created_at: new Date('2026-07-01').toISOString(),
+      is_fallback: true,
+      subcategory: 'Drawing',
     }
   ],
-  'silid-espasyo': [
+  'sculpture-3d': [
     {
-      id: 'mock-espasyo-1',
+      id: 'mock-sculpture-1',
       title: 'Ancient Greek Temple Scale Model',
       description: 'A miniature architectural installation constructed entirely from recycled cardboard and discarded materials, interpreting classical Greek proportions through modern sustainable practices.',
       media_url: null,
@@ -74,9 +64,21 @@ export const fallbackArtworks = {
       is_fallback: true,
     }
   ],
-  'silid-aninag': [
+  'music-audio': [
     {
-      id: 'mock-aninag-1',
+      id: 'mock-audio-1',
+      title: 'Hindi Kami Kaaway (Original Composition)',
+      description: 'An original musical composition and song responding to the issue of red-tagging and its impact on innocent communities. It invites listeners to reflect on truth, dignity, and justice.',
+      media_url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', // Safe demo audio url
+      media_type: 'audio',
+      thumbnail_url: null,
+      created_at: new Date('2026-07-02').toISOString(),
+      is_fallback: true,
+    }
+  ],
+  'film-video': [
+    {
+      id: 'mock-video-1',
       title: 'Exhibition Screening Reel (Short Film)',
       description: 'A compilation of digital visual storytelling, short animated clips, and exhibition video highlights prepared for the screening room.',
       media_url: 'https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-1611-large.mp4',
@@ -86,11 +88,11 @@ export const fallbackArtworks = {
       is_fallback: true,
     }
   ],
-  'silid-manlilikha': [
+  'writing-poetry': [
     {
-      id: 'mock-manlilikha-1',
-      title: 'Group Members & Instructor Tribute',
-      description: 'An interactive layout introducing the dedicated creators behind Silid Museo, acknowledging the group members and the subject instructor who guided the project to realization.',
+      id: 'mock-writing-1',
+      title: 'Group Members & Instructor Tribute (Written)',
+      description: 'A compiled written tribute and introduction page dedicated to the creators and the guiding subject instructor behind the Haraya Creative Archive.',
       media_url: null,
       media_type: 'image',
       thumbnail_url: null,

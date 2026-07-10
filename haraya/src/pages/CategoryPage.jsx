@@ -149,7 +149,7 @@ export default function CategoryPage() {
     }
   };
 
-  const filteredArtworks = category?.slug === 'silid-lona'
+  const filteredArtworks = (category?.slug === 'traditional-painting' || category?.slug === 'silid-lona')
     ? artworks.filter(art => {
         if (selectedSubcategory === 'All') return true;
         return art.subcategory === selectedSubcategory;
@@ -239,8 +239,8 @@ export default function CategoryPage() {
             )}
           </div>
 
-          {/* Subcategory filter toggle (Only for Silid-Lona) */}
-          {category?.slug === 'silid-lona' && (
+          {/* Subcategory filter toggle (Only for Traditional & Painting) */}
+          {(category?.slug === 'traditional-painting' || category?.slug === 'silid-lona') && (
             <div className="flex justify-center md:justify-start mb-8 font-serif" style={{ fontFamily: 'EB Garamond, Georgia, serif' }}>
               <div className="inline-flex rounded-full p-1 border" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-brown)' }}>
                 {['All', 'Drawing', 'Painting'].map((subcat) => {

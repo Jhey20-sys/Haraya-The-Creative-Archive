@@ -28,7 +28,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
   const thumbnailInputRef = useRef(null);
 
   const selectedCategory = categories.find(cat => cat.id === selectedCategoryId);
-  const isSilidLona = selectedCategory?.slug === 'silid-lona' || selectedCategory?.name?.includes('Silid-Lona');
+  const isSilidLona = selectedCategory?.slug === 'traditional-painting' || selectedCategory?.slug === 'silid-lona' || selectedCategory?.name?.toLowerCase().includes('painting') || selectedCategory?.name?.toLowerCase().includes('lona');
 
   const handleDrag = (e) => {
     e.preventDefault();
@@ -220,7 +220,7 @@ export default function ArtworkForm({ artwork, categoryId, onClose, onSaved }) {
                 const newCatId = e.target.value;
                 setSelectedCategoryId(newCatId);
                 const newCat = categories.find(c => c.id === newCatId);
-                const isLona = newCat?.slug === 'silid-lona' || newCat?.name?.includes('Silid-Lona');
+                const isLona = newCat?.slug === 'traditional-painting' || newCat?.slug === 'silid-lona' || newCat?.name?.toLowerCase().includes('painting') || newCat?.name?.toLowerCase().includes('lona');
                 if (!isLona) {
                   setSubcategory(null);
                 }
