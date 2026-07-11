@@ -61,6 +61,27 @@ export default function ElegantCarousel({ categories }) {
 
   const slidesCount = categories?.length || 0;
 
+  const [subImageIndex, setSubImageIndex] = useState(0);
+
+  const currentSlide = slidesCount > 0 ? categories[currentIndex] : null;
+
+  // Reset subImageIndex when main slide changes
+  useEffect(() => {
+    setSubImageIndex(0);
+  }, [currentIndex]);
+
+  // Cycle subImageIndex if there are multiple images
+  useEffect(() => {
+    const imagesCount = currentSlide?.artwork_images?.length || 0;
+    if (imagesCount <= 1 || isPaused) return;
+
+    const subInterval = setInterval(() => {
+      setSubImageIndex((prev) => (prev + 1) % imagesCount);
+    }, 3000); // cycle every 3 seconds
+
+    return () => clearInterval(subInterval);
+  }, [currentIndex, currentSlide, isPaused]);
+
   const goToSlide = useCallback(
     (index, dir) => {
       if (isTransitioning || index === currentIndex || slidesCount === 0) return;
@@ -126,9 +147,8 @@ export default function ElegantCarousel({ categories }) {
     }
   };
 
-  if (slidesCount === 0) return null;
+  if (slidesCount === 0 || !currentSlide) return null;
 
-  const currentSlide = categories[currentIndex];
   const accent = getCategoryAccent(currentSlide.slug);
   const imageUrl = currentSlide.cover_image_url || getCategoryFallbackImage(currentSlide.slug);
 
@@ -148,6 +168,26 @@ export default function ElegantCarousel({ categories }) {
           background: `radial-gradient(ellipse at 70% 50%, ${accent}18 0%, transparent 70%)`,
         }}
       />
+
+      {/* Floating Navigation Arrows */}
+      <button
+        onClick={goPrev}
+        className="carousel-arrow-btn prev-btn"
+        aria-label="Previous slide"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        onClick={goNext}
+        className="carousel-arrow-btn next-btn"
+        aria-label="Next slide"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
 
       <div className="carousel-inner">
         {/* Left: Text Content */}
@@ -189,36 +229,22 @@ export default function ElegantCarousel({ categories }) {
             <div className={`mt-8 ${isTransitioning ? 'transitioning opacity-0' : 'visible transition-all duration-300'}`}>
               <Link
                 to={`/category/${currentSlide.slug}`}
-                className="btn btn-secondary"
+                className="carousel-cta-btn"
                 style={{
                   borderColor: accent,
                   color: 'var(--cream)',
                 }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = accent;
+                  e.currentTarget.style.color = '#ffffff';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--cream)';
+                }}
               >
                 Open Drawer <span className="ml-2">→</span>
               </Link>
-            </div>
-
-            {/* Navigation Arrows */}
-            <div className="carousel-nav-arrows">
-              <button
-                onClick={goPrev}
-                className="carousel-arrow-btn"
-                aria-label="Previous slide"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={goNext}
-                className="carousel-arrow-btn"
-                aria-label="Next slide"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
@@ -228,15 +254,31 @@ export default function ElegantCarousel({ categories }) {
           <div
             className={`carousel-image-frame ${isTransitioning ? 'transitioning' : 'visible'}`}
           >
-            <img
-              src={imageUrl}
-              alt={currentSlide.name}
-              className="carousel-image"
-            />
+            {currentSlide.artwork_images && currentSlide.artwork_images.length > 0 ? (
+              currentSlide.artwork_images.map((imgUrl, imgIdx) => (
+                <img
+                  key={imgIdx}
+                  src={imgUrl}
+                  alt={`${currentSlide.name} ${imgIdx + 1}`}
+                  className="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                  style={{
+                    opacity: imgIdx === subImageIndex ? 1 : 0,
+                    zIndex: imgIdx === subImageIndex ? 2 : 1,
+                  }}
+                />
+              ))
+            ) : (
+              <img
+                src={imageUrl}
+                alt={currentSlide.name}
+                className="carousel-image absolute inset-0 w-full h-full object-cover"
+              />
+            )}
             <div
               className="carousel-image-overlay"
               style={{
                 background: `linear-gradient(135deg, ${accent}22 0%, transparent 50%)`,
+                zIndex: 3,
               }}
             />
           </div>

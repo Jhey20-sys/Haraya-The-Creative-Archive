@@ -1057,8 +1057,8 @@ footer {
 }
 
 .carousel-description {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14.5px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16.5px;
   line-height: 1.6;
   color: rgba(244, 232, 208, 0.75);
   margin-bottom: 28px;
@@ -1097,6 +1097,36 @@ footer {
   color: var(--brown);
   border-color: var(--cream);
   transform: scale(1.05);
+}
+
+.carousel-arrow-btn.prev-btn {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.carousel-arrow-btn.next-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.carousel-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 10px 24px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .carousel-image-container {

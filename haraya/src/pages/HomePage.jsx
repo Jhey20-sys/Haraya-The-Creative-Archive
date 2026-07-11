@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import categories from '../data/categoryConfig.js';
 import { getCategories } from '../services/categories.js';
+import { supabase } from '../lib/supabase.js';
 import ElegantCarousel from '../components/landing/ElegantCarousel.jsx';
 
 export default function HomePage() {
@@ -14,13 +15,33 @@ export default function HomePage() {
       try {
         const dbCats = await getCategories();
         if (dbCats && dbCats.length > 0) {
-          // Merge database category metadata with local config styles (icons, gradients)
-          // We match by id to support clean URL slugs and self-heal any old database names
-          finalCategories = categories.map((localConfig) => {
-            const dbCat = dbCats.find((c) => c.id === localConfig.id) || {};
+          // Fetch all artwork thumbnails and media URLs from database
+          let dbArtworks = [];
+          try {
+            const { data, error } = await supabase
+              .from('artworks')
+              .select('category_id, media_url, media_type, thumbnail_url')
+              .order('created_at', { ascending: false });
+            if (!error && data) {
+              dbArtworks = data;
+            }
+          } catch (e) {
+            console.warn('Failed to fetch artworks for carousel thumbnails:', e.message);
+          }
+
+          // Map over dbCats directly to preserve database display order
+          finalCategories = dbCats.map((dbCat) => {
+            const localConfig = categories.find((c) => c.slug === dbCat.slug || c.id === dbCat.id) || {};
+            
+            // Extract all non-null thumbnail or image URLs for this category
+            const catArtworks = dbArtworks
+              .filter((art) => art.category_id === dbCat.id)
+              .map((art) => art.thumbnail_url || (art.media_type === 'image' ? art.media_url : null))
+              .filter(Boolean);
+
             return {
-              id: localConfig.id,
-              slug: localConfig.slug,
+              id: dbCat.id,
+              slug: dbCat.slug,
               name: dbCat.name && !dbCat.name.includes('Silid-') ? dbCat.name : localConfig.name,
               description: dbCat.description && !dbCat.description.includes('Silid-') && !dbCat.description.includes('silid-') ? dbCat.description : localConfig.description,
               expanded_description: dbCat.expanded_description && !dbCat.expanded_description.includes('Silid-') ? dbCat.expanded_description : localConfig.expanded_description,
@@ -28,8 +49,9 @@ export default function HomePage() {
               gradient: localConfig.gradient,
               cover_image_url: dbCat.cover_image_url || localConfig.cover_image_url,
               hryRef: localConfig.hryRef,
-              refName: localConfig.refName,
-              iconText: localConfig.iconText,
+              refName: localConfig.refName || dbCat.name,
+              iconText: localConfig.iconText || dbCat.name,
+              artwork_images: catArtworks.length > 0 ? catArtworks : [dbCat.cover_image_url || localConfig.cover_image_url].filter(Boolean)
             };
           });
         }
