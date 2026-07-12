@@ -952,12 +952,18 @@ footer {
   max-width: 1280px;
   margin: 0 auto;
   min-height: 400px;
-  padding: 30px 24px;
+  padding: 30px 16px;
   border-radius: 8px;
   background: rgba(44, 26, 18, 0.25);
   border: 1px solid rgba(200, 155, 60, 0.15);
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px) {
+  .carousel-wrapper {
+    padding: 40px 72px;
+  }
 }
 
 .carousel-bg-wash {
@@ -993,6 +999,15 @@ footer {
 
 .carousel-content-inner {
   max-width: 500px;
+  width: 100%;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .carousel-content-inner {
+    padding: 0;
+  }
 }
 
 .carousel-collection-num {
@@ -1081,8 +1096,8 @@ footer {
   background: transparent;
   color: var(--cream);
   border: 1px solid rgba(244, 232, 208, 0.25);
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1091,27 +1106,50 @@ footer {
   transition: all 0.2s ease;
 }
 
+@media (min-width: 768px) {
+  .carousel-arrow-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 .carousel-arrow-btn:hover {
   background: var(--cream);
   color: var(--brown);
   border-color: var(--cream);
-  transform: scale(1.05);
 }
 
 .carousel-arrow-btn.prev-btn {
   position: absolute;
-  left: 12px;
+  left: 8px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
 }
 
+.carousel-arrow-btn.prev-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
 .carousel-arrow-btn.next-btn {
   position: absolute;
-  right: 12px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
+}
+
+.carousel-arrow-btn.next-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .carousel-arrow-btn.prev-btn {
+    left: 20px;
+  }
+  .carousel-arrow-btn.next-btn {
+    right: 20px;
+  }
 }
 
 .carousel-cta-btn {
@@ -1126,6 +1164,7 @@ footer {
   border-radius: 4px;
   transition: all 0.25s ease;
   cursor: pointer;
+  border: 1.5px solid;
 }
 
 .carousel-image-container {
@@ -1134,6 +1173,14 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .carousel-image-container {
+    padding: 0;
+  }
 }
 
 .carousel-image-frame {

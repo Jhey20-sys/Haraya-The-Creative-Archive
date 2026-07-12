@@ -31,14 +31,15 @@ export default function Footer() {
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 w-full">
             {[
-              { name: 'Achas, Kieth Lawrence', email: 's.achas.kiethlawrence@cmu.edu.ph' },
-              { name: 'Galleros, Kimberly', email: 's.galleros.kimberly@cmu.edu.ph' },
-              { name: 'Pañares, Frenche Jyne', email: 's.panares.frenchejyne@cmu.edu.ph' },
-              { name: 'Revilla, Cherlyn', email: 's.revillia.cherlyn@cmu.edu.ph' },
-              { name: 'Saballia, Clarence', email: 's.saballia.clarence@cmu.edu.ph' },
-              { name: 'Tan, Rodge Daniellette', email: 's.tan.rodgedaniellette@cmu.edu.ph' },
+              { name: 'Batchar, Princess Lynmiel A.', email: 's.batchar.princesslynmiel@cmu.edu.ph' },
+              { name: 'Galvizo, April Veniza D.', email: 's.galvizo.aprilveniza@cmu.edu.ph' },
+              { name: 'Manga, Richard Lloydd G.', email: 's.manga.richardlloydd@cmu.edu.ph' },
+              { name: 'Pabatang, Fretzie Jean C.', email: 's.pabatang.fretziejean@cmu.edu.ph' },
+              { name: 'Pawang, Ylla Liann G.', email: 's.pawang.yllaliann@cmu.edu.ph' },
+              { name: 'Reloba, Abegail L.', email: 's.reloba.abegail@cmu.edu.ph' },
+              { name: 'Tamayo, Guen Micah B.', email: 's.tamayo.guenmicah@cmu.edu.ph' },
             ].map((artist, idx) => (
               <div
                 key={idx}
@@ -59,7 +60,7 @@ export default function Footer() {
               >
                 {/* Artist Name */}
                 <p 
-                  className="font-sans font-medium text-xs sm:text-[13px] leading-tight transition-all duration-300 py-1.5"
+                  className="font-sans font-medium text-[11px] sm:text-xs leading-tight transition-all duration-300 py-1.5"
                   style={{ color: 'var(--cream)' }}
                 >
                   {artist.name}

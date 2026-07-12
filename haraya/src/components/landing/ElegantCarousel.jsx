@@ -225,7 +225,7 @@ export default function ElegantCarousel({ categories }) {
               {currentSlide.description}
             </p>
 
-            {/* Open Drawer CTA */}
+            {/* Explore CTA */}
             <div className={`mt-8 ${isTransitioning ? 'transitioning opacity-0' : 'visible transition-all duration-300'}`}>
               <Link
                 to={`/category/${currentSlide.slug}`}
@@ -243,7 +243,7 @@ export default function ElegantCarousel({ categories }) {
                   e.currentTarget.style.color = 'var(--cream)';
                 }}
               >
-                Open Drawer <span className="ml-2">→</span>
+                Explore <span className="ml-2">→</span>
               </Link>
             </div>
           </div>
