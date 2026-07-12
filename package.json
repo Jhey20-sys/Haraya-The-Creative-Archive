@@ -1,0 +1,13 @@
+{
+  "name": "haraya",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd haraya && npm install && npm run build",
+    "dev": "cd haraya && npm run dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.1",
+    "supabase": "^2.109.1"
+  }
+}
