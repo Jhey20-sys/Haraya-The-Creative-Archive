@@ -43,7 +43,7 @@ const categories = [
     gradient: 'from-terracotta/60 to-brown/60',
     mediaType: 'image',
     hryRef: 'HRY–03',
-    refName: 'Painting',
+    refName: 'AI-Generated Painting',
     iconText: 'Pt',
   },
   {

@@ -210,13 +210,7 @@ export default function ElegantCarousel({ categories }) {
               {currentSlide.name}
             </h2>
 
-            {/* Subtitle */}
-            <p
-              className={`carousel-subtitle ${isTransitioning ? 'transitioning' : 'visible'}`}
-              style={{ color: accent }}
-            >
-              Ref. {currentSlide.refName || currentSlide.name}
-            </p>
+
 
             {/* Description */}
             <p
