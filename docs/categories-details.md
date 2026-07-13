@@ -1,9 +1,90 @@
-| # | Category Name | What kind of files go here? | Description |
-|---|---|---|---|
-| 1 | Silid-Lona (The Canvas Room)<br>Silid-Lona (Painting)<br>Silid-Lona (Drawing) | Images | The Silid-Lona painting section features digital artworks that explore the use of artificial intelligence as a creative medium. Presented in this space is an AI-generated digital painting inspired by the 128th Philippine Independence Day, demonstrating how descriptions given by the artists can be transformed into visual compositions. The work highlights the coordination of technology and artistic expression, inviting viewers to consider new possibilities in contemporary art.<br><br>The Silid-Lona drawing section presents hand-drawn works that reflect the artist's thoughts, observations, and ideas at the time of their creation. Through line, composition, and form, each drawing offers a personal perspective captured in a single moment. Together, these works emphasize drawing as both a creative process and a means of visual expression. |
-| 2 | Silid-Tiring (The Audio Room) | Audio | Silid-Tinig is dedicated to original music and songwriting, where sound becomes a medium for reflection and expression. Featured in this room is our original composition, "Hindi Kami Kaaway," a song that responds to the issue of red-tagging and its impact on innocent individuals and communities. Through this piece, it invites listeners to reflect on the human cost of false accusations and the importance of protecting truth, dignity, and justice. |
-| 3 | Silid-Salin (The Transcreation Room) | | Silid-Salin presents works that transform existing art into new creative works. Featured in this room is our original musical play entitled "Larong Pinoy" inspired by the Larong Pinoy paintings of Rico Doronio. The story follows a child from the present generation who, through her grandmother's introduction to the paintings, is transported into their world and experiences traditional Filipino games such as luksong baka, patintero, luksong tinik, and tumbang preso. By bringing these painted scenes to life through music, storytelling, and performance, the production explores the value of play, memory, and culture across generations. |
-| 4 | Silid-Kasaysayan (The History Room) | | Silid-Kasaysayan is a room that traces the development of art through history, specifically from the Early stages of art history; Prehistoric Art, Egyptian Art, Classical Art (Greek and Roman Art and Architecture), Medieval Art, Renaissance Art, and Mannerism. Through a Powerpoint presentation, art forms such as architecture, painting, and sculptures are introduced, providing an overview of the defining styles, techniques, and artistic developments that shaped each historical period. |
-| 5 | Silid-Espasyo (The Spatial Room) | | Silid-Espasyo is a room dedicated to installation art and other three-dimensional forms of artistic expression. Featured in this space is a scale model of an Ancient Greek temple, inspired by Art History and the architectural principles of Classical Greece. Constructed from discarded cardboard and recycled materials, the installation reimagines a historical structure through contemporary, sustainable materials, demonstrating how the past can be interpreted through present-day artistic practice. |
-| 6 | Silid-Aninag (The Screening Room) | Video | |
-| 7 | Silid-Manlilikha (The Creators' Room) | Text and Image | Silid-Manlilikha is a room dedicated to the people behind the exhibition. This space acknowledges the members of the group and our subject instructor, whose collaboration, creativity, and guidance made Silid Museo possible. It serves as a tribute to everyone who contributed to the realization of the exhibition. |
+# Haraya: The Creative Archive
+*Inspired by Tradition, Created for Tomorrow*
+
+---
+
+## 1. Independence Day AI Painting
+
+**Medium:** Image
+
+Created for the 128th Philippine Independence Day, these AI-generated paintings reflect the nation's history and present-day realities. Though visually compelling, they also highlight what AI cannot replicate — the genuine emotion and human soul that give traditional artworks their meaning.
+
+*There are 7 AI paintings in total, each with its own caption below.*
+
+**Princess Lynmiel A. Batchar**
+This artwork portrays the journey of the Filipino nation—from the sacrifices of heroes and struggles of the past to the resilience, unity, and hope that guide future generations.
+
+**April Veniza D. Galvizo**
+The painting conveys the resilience of the Filipinos despite corruption and hardships. It reminds us that the true spirit of Independence Day is found in unity and the strength of every Filipino.
+
+**Richard Lloydd G. Manga**
+The painting depicts Philippine Independence Day, with the flag symbolizing patriotism, freedom, and the Filipinos' struggle against invaders. The people holding weapons represent the bravery and sacrifices made for the nation.
+
+**Fretzie Jean C. Pabatang**
+The painting depicts a modern Philippines free from colonial rule, showcasing the prosperity, peace, and freedom enjoyed by the Filipinos.
+
+**Ylla Liann G. Pawang**
+This painting depicts the enduring spirit and diverse heritage of the Filipinos, showcasing a unified assembly of historical revolutionaries and modern-day professionals.
+
+**Abegail L. Reloba**
+It portrays the spirit of patriotism and unity of Filipinos. The flag symbolizes freedom and independence. The other elements reflect the country's rich culture and shared history.
+
+**Guen Micah B. Tamayo**
+A dramatic depiction of historical liberation, featuring several individuals and the national flag of the Philippines.
+
+---
+
+## 2. Thoughts on Paper: Ink Drawings
+
+**Medium:** Image
+
+A collection of spontaneous ink drawings created from random thoughts and fleeting ideas. Each piece captures a moment of imagination expressed through simple lines and a single pen.
+
+*There are 7 outputs in total.*
+
+**Princess Lynmiel A. Batchar**
+The drawing represents my love for origami, a hobby that helps me relax, express creativity, and enjoy my free time.
+
+**April Veniza D. Galvizo**
+The drawing expresses a desire for peace, freedom, and self-discovery, symbolizing hope, courage, and growth through life's journey.
+
+**Richard Lloydd G. Manga**
+The drawing represents myself as a working student, symbolizing my determination to work hard and achieve my goal of graduating from college.
+
+**Fretzie Jean C. Pabatang**
+The drawing reflects the hobbies, interests, and passions that keep me engaged and inspired.
+
+**Ylla Liann G. Pawang**
+*(caption pending)*
+
+**Abegail L. Reloba**
+The drawing expresses my hope for transparency, fairness, and equal opportunities during Linggo ng Kabataan while emphasizing the importance of honesty and integrity in competition.
+
+**Guen Micah B. Tamayo**
+This drawing reflects my desire to escape the busy city and reconnect with nature, enjoying the calm forest and cool waterfall, especially during hot days.
+
+---
+
+## 3. Music with a Message
+
+**Medium:** Lyrics (text/PDF), Audio
+
+This original song reflects the current realities of the Philippines through themes of struggle, resilience, and hope. It gives voice to the Filipino spirit and the nation's aspirations for a brighter future.
+
+---
+
+## 4. Transcreation
+
+**Medium:** Images (reference painting and performance stills), Lyrics (text/PDF), Audio
+
+A Sayaw-Awit performance inspired by Fernando Amorsolo's *Barrio Fiesta*, celebrating the joy, culture, and traditions of Filipino fiestas through music and dance.
+
+---
+
+## 5. Installation Art
+
+**Medium:** Image (2 outputs; the jellyfish piece includes close-up detail photos)
+
+This installation features a floating group of jellyfish crafted from recyclable materials, transforming waste into an immersive underwater-inspired display. It shows how discarded materials can be reimagined as meaningful works of art.
+
+Inspired by Vincent van Gogh's *The Mulberry Tree*, the installation art symbolizes resilience and quiet beauty, portraying strength and vibrancy even amidst challenges. It conveys themes of hope, endurance, and the idea that difficult times can still hold growth, life, and new possibilities.
