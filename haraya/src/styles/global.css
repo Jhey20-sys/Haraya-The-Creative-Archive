@@ -705,6 +705,83 @@
   }
 }
 
+/* ---------- hero floating particles ---------- */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-particle {
+  position: absolute;
+  animation: float-wiggle-particle linear infinite;
+  pointer-events: none;
+}
+
+.particle-cross-shape {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.particle-cross-shape::before,
+.particle-cross-shape::after {
+  content: '';
+  position: absolute;
+  background: var(--gold-soft);
+  opacity: 0.85;
+}
+
+.particle-cross-shape::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.particle-cross-shape::after {
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.particle-line-shape {
+  display: block;
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background: var(--gold-soft);
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+@keyframes float-wiggle-particle {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-120px) translateX(35px) scale(1.2);
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-260px) translateX(-10px) scale(0.9);
+    opacity: 0;
+  }
+}
+
 /* ---------- about teaser ---------- */
 .about-teaser-section {
   position: relative;

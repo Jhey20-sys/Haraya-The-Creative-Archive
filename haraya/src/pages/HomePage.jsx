@@ -103,6 +103,44 @@ export default function HomePage() {
     <div className="relative">
       {/* HERO */}
       <section className="hero" id="home">
+        {/* Floating Hero Particles (Lines & Crosses) */}
+        <div className="hero-particles">
+          {Array.from({ length: 40 }).map((_, i) => {
+            // Distribute particles to the left (0-20%) and right (75-95%) sides
+            const isRightSide = i % 2 === 0;
+            const leftVal = isRightSide
+              ? 75 + Math.random() * 20
+              : Math.random() * 20;
+
+            const size = Math.random() * 25 + 15; // size from 15px to 40px (bigger)
+            const style = {
+              left: `${leftVal}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${size}px`,
+              height: `${size}px`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${Math.random() * 15 + 10}s`,
+            };
+
+            const isCross = i % 2 === 0;
+
+            return (
+              <span key={i} className="hero-particle" style={style}>
+                {isCross ? (
+                  <span className="particle-cross-shape" />
+                ) : (
+                  <span
+                    className="particle-line-shape"
+                    style={{
+                      transform: `rotate(${Math.random() * 360}deg)`
+                    }}
+                  />
+                )}
+              </span>
+            );
+          })}
+        </div>
+
         <div className="hero-container">
           <span className="eyebrow hero-eyebrow">The Creative Archive</span>
           <h1>HAR<em>A</em>YA</h1>
