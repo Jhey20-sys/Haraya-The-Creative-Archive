@@ -35,7 +35,7 @@ export default function Footer() {
             {[
               { name: 'Batchar, Princess Lynmiel A.', email: 's.batchar.princesslynmiel@cmu.edu.ph' },
               { name: 'Galvizo, April Veniza D.', email: 's.galvizo.aprilveniza@cmu.edu.ph' },
-              { name: 'Manga, Richard Lloydd G.', email: 's.manga.richardlloydd@cmu.edu.ph' },
+              { name: 'Mangga, Richard Lloydd G.', email: 's.mangga.richardlloydd@cmu.edu.ph' },
               { name: 'Pabatang, Fretzie Jean C.', email: 's.pabatang.fretziejean@cmu.edu.ph' },
               { name: 'Pawang, Ylla Liann G.', email: 's.pawang.yllaliann@cmu.edu.ph' },
               { name: 'Reloba, Abegail L.', email: 's.reloba.abegail@cmu.edu.ph' },
@@ -59,7 +59,7 @@ export default function Footer() {
                 }}
               >
                 {/* Artist Name */}
-                <p 
+                <p
                   className="font-sans font-medium text-[11px] sm:text-xs leading-tight transition-all duration-300 py-1.5"
                   style={{ color: 'var(--cream)' }}
                 >
@@ -67,7 +67,7 @@ export default function Footer() {
                 </p>
 
                 {/* Popover Email Block */}
-                <div 
+                <div
                   className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-3 py-1.5 rounded-lg border opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none shadow-xl z-50 text-[10px] font-sans tracking-wide whitespace-nowrap"
                   style={{
                     backgroundColor: 'var(--brown-soft)',
@@ -78,7 +78,7 @@ export default function Footer() {
                 >
                   {artist.email}
                   {/* Tooltip arrow */}
-                  <div 
+                  <div
                     className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 border-r border-b"
                     style={{
                       backgroundColor: 'var(--brown-soft)',
