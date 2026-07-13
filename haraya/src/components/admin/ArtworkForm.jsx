@@ -31,7 +31,7 @@ export default function ArtworkForm({ artwork, categoryId, categories, onClose, 
   const thumbnailInputRef = useRef(null);
 
   const selectedCategory = categories.find(cat => cat.id === selectedCategoryId);
-  const isSilidLona = selectedCategory?.slug === 'traditional-painting' || selectedCategory?.slug === 'silid-lona' || selectedCategory?.name?.toLowerCase().includes('painting') || selectedCategory?.name?.toLowerCase().includes('lona');
+  const isSilidLona = selectedCategory?.slug === 'traditional-painting' || selectedCategory?.slug === 'traditional-dawing' || selectedCategory?.slug === 'ai-painting' || selectedCategory?.slug === 'silid-lona' || selectedCategory?.name?.toLowerCase().includes('painting') || selectedCategory?.name?.toLowerCase().includes('drawing') || selectedCategory?.name?.toLowerCase().includes('draw') || selectedCategory?.name?.toLowerCase().includes('lona');
 
   const handleDrag = (e) => {
     e.preventDefault();
@@ -223,7 +223,7 @@ export default function ArtworkForm({ artwork, categoryId, categories, onClose, 
                 const newCatId = e.target.value;
                 setSelectedCategoryId(newCatId);
                 const newCat = categories.find(c => c.id === newCatId);
-                const isLona = newCat?.slug === 'traditional-painting' || newCat?.slug === 'silid-lona' || newCat?.name?.toLowerCase().includes('painting') || newCat?.name?.toLowerCase().includes('lona');
+                const isLona = newCat?.slug === 'traditional-painting' || newCat?.slug === 'traditional-dawing' || newCat?.slug === 'ai-painting' || newCat?.slug === 'silid-lona' || newCat?.name?.toLowerCase().includes('painting') || newCat?.name?.toLowerCase().includes('drawing') || newCat?.name?.toLowerCase().includes('draw') || newCat?.name?.toLowerCase().includes('lona');
                 if (!isLona) {
                   setSubcategory(null);
                 }

@@ -9,6 +9,8 @@ const getCategoryFallbackImage = (slug) => {
       return 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&h=1200&fit=crop&q=80';
     case 'traditional-painting':
     case 'silid-lona':
+    case 'traditional-dawing':
+    case 'ai-painting':
       return 'https://images.unsplash.com/photo-1528164344705-47542687000d?w=900&h=1200&fit=crop&q=80';
     case 'sculpture-3d':
       return 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=900&h=1200&fit=crop&q=80';
@@ -31,6 +33,8 @@ const getCategoryAccent = (slug) => {
       return '#8BA7B8';
     case 'traditional-painting':
     case 'silid-lona':
+    case 'traditional-dawing':
+    case 'ai-painting':
       return '#7A9E7E';
     case 'sculpture-3d':
       return '#D4A955';

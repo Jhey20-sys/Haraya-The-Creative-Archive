@@ -6,7 +6,7 @@ import { getArtworksByCategory } from '../services/artworks.js';
 import { getCategoryFeedback, submitCategoryFeedback } from '../services/feedback.js';
 import ArtworkCard from '../components/gallery/ArtworkCard.jsx';
 import ArtworkModal from '../components/gallery/ArtworkModal.jsx';
-import { getCategoryById } from '../services/categories.js';
+import { getCategoryById, getCategoryBySlug } from '../services/categories.js';
 
 function parseCategoryName(fullName) {
   if (!fullName) return { main: "", sub: "" };
@@ -22,7 +22,8 @@ function parseCategoryName(fullName) {
 
 export default function CategoryPage() {
   const { slug } = useParams();
-  const category = categories.find((c) => c.slug === slug);
+  const [category, setCategory] = useState(() => categories.find((c) => c.slug === slug));
+  const [notFound, setNotFound] = useState(false);
 
   const [artworks, setArtworks] = useState([]);
   const [selectedSubcategory, setSelectedSubcategory] = useState('All');
@@ -36,9 +37,10 @@ export default function CategoryPage() {
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
 
   useEffect(() => {
-    if (!category) return;
-
-    // Reset page states
+    // Reset/Sync local category first when slug changes
+    const localCategory = categories.find((c) => c.slug === slug);
+    setCategory(localCategory);
+    setNotFound(false);
     setArtworks([]);
     setSelectedSubcategory('All');
     setFeedbackList([]);
@@ -49,41 +51,69 @@ export default function CategoryPage() {
     const loadData = async () => {
       let fetchedArtworks = [];
       let fetchedFeedback = [];
+      let activeCat = localCategory;
 
       try {
-        // Try fetching category details from Supabase
+        // Try fetching category details from Supabase by slug
         try {
-          const fetchedCat = await getCategoryById(category.id);
+          const fetchedCat = await getCategoryBySlug(slug);
           if (fetchedCat) {
             setDbCategory(fetchedCat);
+            const localConfig = categories.find((c) => c.slug === fetchedCat.slug || c.id === fetchedCat.id) || {};
+            activeCat = {
+              id: fetchedCat.id,
+              slug: fetchedCat.slug,
+              name: fetchedCat.name && !fetchedCat.name.includes('Silid-') ? fetchedCat.name : localConfig.name,
+              description: fetchedCat.description && !fetchedCat.description.includes('Silid-') && !fetchedCat.description.includes('silid-') ? fetchedCat.description : localConfig.description,
+              expanded_description: fetchedCat.expanded_description && !fetchedCat.expanded_description.includes('Silid-') ? fetchedCat.expanded_description : localConfig.expanded_description,
+              icon: localConfig.icon || '🎨',
+              gradient: localConfig.gradient,
+              cover_image_url: fetchedCat.cover_image_url || localConfig.cover_image_url,
+              hryRef: localConfig.hryRef,
+              refName: localConfig.refName || fetchedCat.name,
+              iconText: localConfig.iconText || fetchedCat.name,
+            };
+            setCategory(activeCat);
           }
         } catch (_e) {
-          console.warn('Failed to fetch category details from Supabase');
+          console.warn('Failed to fetch category details from Supabase by slug');
+        }
+
+        if (!activeCat) {
+          setNotFound(true);
+          setLoading(false);
+          return;
         }
 
         // Try fetching artworks from Supabase
         try {
-          fetchedArtworks = await getArtworksByCategory(category.id);
+          fetchedArtworks = await getArtworksByCategory(activeCat.id);
         } catch (_e) {
           console.warn('Failed to fetch from Supabase, using mock fallback artworks');
         }
 
         // Try fetching general category comments
         try {
-          fetchedFeedback = await getCategoryFeedback(category.id);
+          fetchedFeedback = await getCategoryFeedback(activeCat.id);
         } catch (_e) {
           console.warn('Failed to fetch category feedback from Supabase');
         }
       } catch (err) {
         console.error('Data loading error:', err);
       } finally {
+        if (!activeCat) return;
+
         // Fallback checks
         if (!fetchedArtworks || fetchedArtworks.length === 0) {
-          fetchedArtworks = fallbackArtworks[category.slug] || [];
+          let fallbackKey = activeCat.slug;
+          if (fallbackKey === 'ai-painting' || fallbackKey === 'traditional-dawing') {
+            fallbackKey = 'traditional-painting';
+          }
+          fetchedArtworks = fallbackArtworks[fallbackKey] || [];
         }
 
         // Merge category feedback with localStorage category feedback
-        const localFeedback = JSON.parse(localStorage.getItem(`cat_feedback_${category.slug}`) || '[]');
+        const localFeedback = JSON.parse(localStorage.getItem(`cat_feedback_${activeCat.slug}`) || '[]');
         const combinedFeedback = [...localFeedback, ...fetchedFeedback].sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
@@ -95,7 +125,7 @@ export default function CategoryPage() {
     };
 
     loadData();
-  }, [slug, category]);
+  }, [slug]);
 
   const handleUpdateArtwork = (artworkId, updatedFields) => {
     setArtworks((prev) =>
@@ -109,7 +139,7 @@ export default function CategoryPage() {
 
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
-    if (!newFeedback.trim() || isSubmittingFeedback) return;
+    if (!newFeedback.trim() || isSubmittingFeedback || !category) return;
     setIsSubmittingFeedback(true);
 
     const feedbackObject = {
@@ -149,14 +179,30 @@ export default function CategoryPage() {
     }
   };
 
-  const filteredArtworks = (category?.slug === 'traditional-painting' || category?.slug === 'silid-lona')
+  const isPaintingOrDrawing =
+    category?.slug === 'traditional-painting' ||
+    category?.slug === 'silid-lona';
+
+  const filteredArtworks = isPaintingOrDrawing
     ? artworks.filter(art => {
         if (selectedSubcategory === 'All') return true;
         return art.subcategory === selectedSubcategory;
       })
     : artworks;
 
-  if (!category) {
+  if (loading && !category) {
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">
+        <div className="animate-pulse space-y-4">
+          <div className="h-4 w-24 bg-neutral-800 rounded mx-auto" />
+          <div className="h-10 w-48 bg-neutral-800 rounded mx-auto" />
+          <div className="h-6 w-96 bg-neutral-800 rounded mx-auto" />
+        </div>
+      </div>
+    );
+  }
+
+  if (notFound || !category) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">
         <h1 className="mb-4 text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>
@@ -242,7 +288,7 @@ export default function CategoryPage() {
           </div>
 
           {/* Subcategory filter toggle (Only for Traditional & Painting) */}
-          {(category?.slug === 'traditional-painting' || category?.slug === 'silid-lona') && (
+          {isPaintingOrDrawing && (
             <div className="flex justify-center md:justify-start mb-8 font-serif" style={{ fontFamily: 'EB Garamond, Georgia, serif' }}>
               <div className="inline-flex rounded-full p-1 border" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-brown)' }}>
                 {['All', 'Drawing', 'Painting'].map((subcat) => {
