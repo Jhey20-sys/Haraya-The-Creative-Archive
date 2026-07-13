@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, isValidElement, cloneElement } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -22,15 +22,41 @@ const ScrollReveal = ({
   const containerRef = useRef(null);
 
   const splitText = useMemo(() => {
-    const text = typeof children === 'string' ? children : '';
-    return text.split(/(\s+)/).map((word, index) => {
-      if (word.match(/^\s+$/)) return word;
-      return (
-        <span className="word" key={index}>
-          {word}
-        </span>
-      );
-    });
+    let wordIndex = 0;
+
+    const processNode = (node) => {
+      if (node === null || node === undefined) {
+        return node;
+      }
+      if (typeof node === 'string' || typeof node === 'number') {
+        return String(node).split(/(\s+)/).map((word) => {
+          if (word.match(/^\s+$/)) return word;
+          wordIndex++;
+          return (
+            <span className="word" key={`word-${wordIndex}`}>
+              {word}
+            </span>
+          );
+        });
+      }
+      if (Array.isArray(node)) {
+        return node.map((child, index) => {
+          const res = processNode(child);
+          return isValidElement(res) ? cloneElement(res, { key: res.key || index }) : res;
+        });
+      }
+      if (isValidElement(node)) {
+        if (node.props && node.props.children !== undefined) {
+          return cloneElement(node, {
+            children: processNode(node.props.children)
+          });
+        }
+        return node;
+      }
+      return node;
+    };
+
+    return processNode(children);
   }, [children]);
 
   useEffect(() => {

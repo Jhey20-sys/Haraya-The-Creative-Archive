@@ -32,7 +32,7 @@ export default function HomePage() {
           // Map over dbCats directly to preserve database display order
           finalCategories = dbCats.map((dbCat) => {
             const localConfig = categories.find((c) => c.slug === dbCat.slug || c.id === dbCat.id) || {};
-            
+
             // Extract all non-null thumbnail or image URLs for this category
             const catArtworks = dbArtworks
               .filter((art) => art.category_id === dbCat.id)
@@ -74,14 +74,14 @@ export default function HomePage() {
       const rect = section.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       const xOffset = (x - rect.width / 2) / (rect.width / 2);
       const yOffset = (y - rect.height / 2) / (rect.height / 2);
-      
+
       const maxMove = 20; // subtle movement of 20px max
       const moveX = xOffset * maxMove;
       const moveY = yOffset * maxMove;
-      
+
       section.style.setProperty('--mouse-x', `${moveX}px`);
       section.style.setProperty('--mouse-y', `${moveY}px`);
     };
@@ -163,8 +163,7 @@ export default function HomePage() {
             — Est. 2026
           </p>
           <p className="lede font-serif">
-            Inspired by <em>haraya</em>—the Filipino word for imagination—this archive is a warm, museum-inspired sanctuary for creative expression. It is a space where local heritage meets contemporary global design. Here, photography sits beside film, and a poem is filed with the same dignity as a painting, keeping every creative voice open for those curious enough to look closer.
-          </p>
+            Haraya is a student-curated digital gallery showcasing creative works inspired by Filipino heritage and contemporary life. Through visual art, music, performances, and installations, we celebrate culture, creativity, and the stories that connect generations.          </p>
           <div className="hero-actions">
             <Link to="/about" className="btn btn-primary">
               Read Our Full Story

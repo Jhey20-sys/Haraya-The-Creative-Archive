@@ -94,23 +94,10 @@ export default function AboutPage() {
             baseOpacity={0.1}
             baseRotation={2}
             blurStrength={4}
-            containerClassName="mx-auto text-center"
-            textClassName="!text-sm md:!text-base font-heading font-semibold text-theme-primary text-center tracking-wide"
-          >
-            {"Haraya Curatorial Guild - The official Curatorial Body of BS BIO 3B [Group 1]"}
-          </ScrollReveal>
-
-
-          <ScrollReveal
-            scrollContainerRef={scrollContainerRef}
-            enableBlur={true}
-            baseOpacity={0.1}
-            baseRotation={2}
-            blurStrength={4}
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Our journey begins with Photography. Here, everyday moments and frozen light are gathered for a second look. Each photograph captures the raw interaction between subject, shadows, and perspective, documenting passing frames of time with precision and care."}
+            {"Haraya is a student-curated digital gallery showcasing creative works inspired by Filipino heritage and contemporary life. Through visual art, music, performances, and installations, we celebrate culture, creativity, and the stories that connect generations."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -122,7 +109,8 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Next, we explore Digital Art. This room highlights works built pixel by pixel, tracing the boundary where technical software meets creative imagination. From concept illustrations to digital paintings, these visual compositions demonstrate the co-existence of technology and artistic expression."}
+            <strong>Princess Lynmiel A. Batchar</strong>
+            {" - I love all forms of art because they allow me to express my creativity, unwind, and transform ordinary things into something meaningful. I am especially inspired by The Starry Night by Vincent van Gogh. Its vivid colors, emotional depth, and dynamic composition remind me that art can tell a story beyond what we see."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -134,7 +122,8 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"We then enter Traditional & Painting. This drawer holds the archive's oldest creative language: brush, canvas, and pigment. From oil colors and acrylics to hand-drawn sketches capturing line, form, and raw observation, this collection honors the timeless tactility of the canvas."}
+            <strong>April Veniza D. Galvizo</strong>
+            {" - Creating allows me to translate feelings, memories, and quiet ideas into something visible and real. I believe that beauty doesn’t always shout; sometimes it’s in the small details of daily life. Through my art, I want to show people that it is very important to look a little deeper, to appreciate the little things, every detail in the world around us."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -146,7 +135,8 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Further along, we encounter Sculpture & 3D. Here, artistic ideas are given physical and virtual form, modeled in digital spaces or shaped using sustainable, recycled materials. These three-dimensional works bridge historical proportions with contemporary architectural preservation."}
+            <strong>Richard Lloydd G. Mangga</strong>
+            {" - A student whose academic world is defined by the precise structures, microscopic details, and evolutionary patterns of life. I am eager to expand my perspective through this creative exploration, discovering how a deeper engagement with human expression can enrich my overall understanding of life, form, and meaning."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -158,7 +148,8 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"We step into the acoustic sanctuary of Music & Audio. Sound, composition, and original songwriting are compiled here as instruments of reflection, featuring original compositions and tunes that respond to contemporary themes."}
+            <strong>Fretzie Jean C. Pabatang</strong>
+            {" - An art enthusiast, I admire the works of Vincent Van Gogh, Claude Monet, Alfred Sisley, and J.M.W. Turner, as well as classic Hollywood films with well-written scripts and contemporary music."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -170,7 +161,8 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"In Film & Video, time and movement weave cinematic narratives. This screening room brings visual storytelling, motion edits, and sound design together into a single, cohesive cinematic experience."}
+            <strong>Ylla Liann G. Pawang</strong>
+            {" - I enjoy exploring art as a form of creativity and self-expression. I believe that both science and art inspire curiosity, innovation, and meaningful connections with the world around us. I hope to encourage others to see beauty, purpose, and possibility in things that are often overlooked."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -182,7 +174,8 @@ export default function AboutPage() {
             containerClassName="mx-auto text-justify"
             textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"Finally, we arrive at Writing & Poetry. Dedicated to words kept for their own sake, this section documents written reflection, verse, and creative storytelling, keeping thoughts alive for future readers."}
+            <strong>Abegail L. Reloba</strong>
+            {" - I am inspired by Claude Monet and Gustav Klimt for their ability to capture beauty, emotion, and meaning in their work. Their artistry has taught me to appreciate both the quiet wonders of nature and the richness of human expression, reminding me that curiosity and creativity go hand in hand."}
           </ScrollReveal>
 
           <ScrollReveal
@@ -191,10 +184,11 @@ export default function AboutPage() {
             baseOpacity={0.1}
             baseRotation={2}
             blurStrength={4}
-            containerClassName="mx-auto text-justify pt-8 border-t border-theme-subtle"
-            textClassName="!text-sm font-medium leading-relaxed text-theme-primary font-sans text-justify"
+            containerClassName="mx-auto text-justify"
+            textClassName="!text-sm leading-relaxed text-theme-secondary font-sans !font-normal text-justify"
           >
-            {"At its core, the mission of Haraya remains to create an inclusive virtual space that celebrates artistic expression across all mediums, making art accessible, dialogic, and interactive for everyone."}
+            <strong>Guen Micah B. Tamayo</strong>
+            {" - I enjoy expressing creativity through crafts, with a particular interest in handmade projects. I draw inspiration from my surroundings, everyday observations, and moments of reflection, transforming these experiences into meaningful expressions."}
           </ScrollReveal>
         </div>
       </div>
