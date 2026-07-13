@@ -146,7 +146,7 @@ export default function HomePage() {
           <h1>HAR<em>A</em>YA</h1>
           <p className="tagline">Inspired by Tradition, Created for Tomorrow</p>
           <p className="lede font-serif">
-            A living collection of art, sound, and story — gathered across seven mediums and kept open for anyone curious enough to look closer.
+            A living collection of art, sound, and story — gathered across five mediums and kept open for anyone curious enough to look closer.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#categories">Enter the Archive</a>
@@ -177,7 +177,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="pt-8 mb-8 text-center">
-            <span className="eyebrow mb-2 block">Seven Mediums, One Collection</span>
+            <span className="eyebrow mb-2 block">Five Mediums, One Collection</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading tracking-wide text-[var(--cream)] mb-3">The Index</h2>
             <p className="text-neutral-400 font-serif max-w-2xl mx-auto italic text-base md:text-lg leading-relaxed">
               Every piece in Haraya is filed by medium, not by fame. Choose a drawer to open.
